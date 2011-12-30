@@ -1,0 +1,17 @@
+List of partitions:
+
+mbr
+mbr_boot
+xloader
+uboot
+kernel
+ramdisk
+recovery
+logo
+system
+cache
+userdata
+pixcirfw
+inand-secure
+inand-storage
+

@@ -13,6 +13,14 @@ LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
 LOCAL_SRC_FILES := recovery/postrecoveryboot.sh
 include $(BUILD_PREBUILT)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := mg_cal
+LOCAL_MODULE_TAGS := eng
+LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES
+LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+LOCAL_SRC_FILES := recovery/mg_cal
+include $(BUILD_PREBUILT)
+
 # This is how it's done elsewhere, but doesn't seem to do it for me
 #file := $(TARGET_RECOVERY_ROOT_OUT)/sbin/postrecoveryboot.sh
 #ALL_PREBUILT += $(file)

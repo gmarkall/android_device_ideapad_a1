@@ -12,6 +12,8 @@ BOARD_PAGE_SIZE := 0x00000800
 
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
 
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/a1/recovery/recovery_ui.c
+
 # fix this up by examining /proc/mtd on a running device
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00480000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x08c60000

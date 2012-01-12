@@ -34,7 +34,7 @@ PRODUCT_COPY_FILES += \
     device/lenovo/a1/ueventd.a1.rc:root/ueventd.a1.rc
 
 # Place wifi files
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     device/lenovo/a1/prebuilt/wifi/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
     device/lenovo/a1/prebuilt/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
     device/lenovo/a1/prebuilt/wifi/firmware.bin:/system/etc/wifi/firmware.bin

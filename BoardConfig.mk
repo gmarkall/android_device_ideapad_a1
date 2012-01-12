@@ -37,6 +37,10 @@ TARGET_NO_RADIOIMAGE := true
 # HW Graphics
 OMAP3_GL := true
 
+# Camera
+#BOARD_USES_TI_CAMERA_HAL := true
+USE_CAMERA_STUB := true
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 

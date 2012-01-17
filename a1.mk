@@ -30,7 +30,7 @@ $(call inherit-product, build/target/product/full_base.mk)
 
 # Get a proper init file
 PRODUCT_COPY_FILES += \
-    device/lenovo/a1/init.a1.rc:root/init.rc \
+    device/lenovo/a1/init.a1.rc:root/init.target.rc \
     device/lenovo/a1/ueventd.a1.rc:root/ueventd.a1.rc
 
 # Place wifi files

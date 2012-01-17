@@ -194,9 +194,9 @@ loglevel 3
     mkdir /data/property 0700 root root
 
 # create dalvik-cache and double-check the perms
-    mkdir /data/dalvik-cache 0771 system system
-    chown system system /data/dalvik-cache
-    chmod 0771 /data/dalvik-cache
+    mkdir /cache/dalvik-cache 0771 system system
+    chown system system /cache/dalvik-cache
+    chmod 0771 /cache/dalvik-cache
 
 # create the lost+found directories, so as to enforce our permissions
     mkdir /data/lost+found 0770
@@ -532,6 +532,7 @@ write /sys/class/rfkill/rfkill3/state 0
 
     service netd /system/bin/netd
         socket netd stream 0660 root system
+        socket dnsproxyd stream 0660 root inet
 
     service debuggerd /system/bin/debuggerd
 
@@ -578,15 +579,15 @@ write /sys/class/rfkill/rfkill3/state 0
         disabled
         oneshot
 
-    service dbus /system/bin/dbus-daemon --system --nofork
-        socket dbus stream 660 bluetooth bluetooth
-        user bluetooth
-        group bluetooth net_bt_admin
+#    service dbus /system/bin/dbus-daemon --system --nofork
+#        socket dbus stream 660 bluetooth bluetooth
+#        user bluetooth
+#        group bluetooth net_bt_admin
 
 #BRCM FM++
-service btld /system/bin/logwrapper /system/bin/btld -lpm 1
+#service btld /system/bin/logwrapper /system/bin/btld -lpm 1
 #<-- LH_SWRD_CL1_richard@20110702
-service btld /system/bin/btld -lpm 1
+#service btld /system/bin/btld -lpm 1
 #LH_SWRD_CL1_richard@20110702 -->
     user root
         group bluetooth net_bt_admin
@@ -594,24 +595,24 @@ service btld /system/bin/btld -lpm 1
         oneshot
 
 # start btld if soft_onoff is enabled
-    on property:service.brcm.bt.soft_onoff=1
-    start btld
+#    on property:service.brcm.bt.soft_onoff=1
+#    start btld
 
 # stop btld if soft_onoff is disabled
-    on property:service.brcm.bt.soft_onoff=0
-    stop btld
+#    on property:service.brcm.bt.soft_onoff=0
+#    stop btld
 
 #STOPSHIP: Remove logwrapper and -d option before production
 #<-- LH_SWRD_CL1_richard@20110702
 #service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -d -n
-service bluetoothd /system/bin/bluetoothd -n
+#service bluetoothd /system/bin/bluetoothd -n
 #LH_SWRD_CL1_richard@20110702 -->
-    socket bluetooth stream 660 bluetooth bluetooth
-    socket dbus_bluetooth stream 660 bluetooth bluetooth
+#    socket bluetooth stream 660 bluetooth bluetooth
+#    socket dbus_bluetooth stream 660 bluetooth bluetooth
 # init.rc does not yet support applying capabilities, so run as root and
 # let bluetoothd drop uid to bluetooth with the right linux capabilities
-    group bluetooth net_bt_admin misc
-        disabled
+#    group bluetooth net_bt_admin misc
+#        disabled
 #BRCM FM--
 
     service uim /system/bin/uim-sysfs
@@ -620,12 +621,12 @@ service bluetoothd /system/bin/bluetoothd -n
         oneshot
 
 
-    service hciattach /system/bin/brcm_patchram_plus -d --enable_hci  --patchram /system/proprietary/bt/bcm4329.hcd --baudrate 3000000 --bd_addr 00:01:36:87:65:43  /dev/ttyO1
-        user root
+#    service hciattach /system/bin/brcm_patchram_plus -d --enable_hci  --patchram /system/proprietary/bt/bcm4329.hcd --baudrate 3000000 --bd_addr 00:01:36:87:65:43  /dev/ttyO1
+#        user root
 # changing user to root from bluetooth is a potential security issue
-    group bluetooth net_bt_admin misc
-        disabled
-        oneshot
+#    group bluetooth net_bt_admin misc
+#        disabled
+#        oneshot
 
 #    service hfag /system/bin/sdptool add --channel=10 HFAG
 #        user bluetooth
@@ -654,8 +655,8 @@ service bluetoothd /system/bin/bluetoothd -n
     service installd /system/bin/installd
         socket installd stream 600 system system
 
-    service flash_recovery /system/etc/install-recovery.sh
-        oneshot
+#    service flash_recovery /system/etc/install-recovery.sh
+#        oneshot
 
     service racoon /system/bin/racoon
         socket racoon stream 600 system system
@@ -750,6 +751,6 @@ service fxn_wifi_reset system/bin/init.fxn_wifi.sh
 #	user root
 #	oneshot
 	
-service BT_ADDR /system/bin/getBTMac.sh
-	user root
-	oneshot
+#service BT_ADDR /system/bin/getBTMac.sh
+#	user root
+#	oneshot

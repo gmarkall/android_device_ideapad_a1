@@ -30,8 +30,8 @@ $(call inherit-product, build/target/product/full_base.mk)
 
 # Get a proper init file
 PRODUCT_COPY_FILES += \
-    device/lenovo/a1/init.a1.rc:root/init.target.rc \
-    device/lenovo/a1/ueventd.a1.rc:root/ueventd.a1.rc
+    device/lenovo/A1_07/init.A1_07.rc:root/init.target.rc \
+    device/lenovo/A1_07/ueventd.A1_07.rc:root/ueventd.A1_07.rc
 
 # Place wifi files
 #PRODUCT_COPY_FILES += \
@@ -45,7 +45,7 @@ PRODUCT_COPY_FILES += \
 
 # Place prebuilt from omapzoom
 PRODUCT_COPY_FILES += \
-    device/lenovo/a1/prebuilt/GFX/system/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so 
+    device/lenovo/A1_07/prebuilt/GFX/system/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so 
 
 # Place permission files
 PRODUCT_COPY_FILES += \
@@ -60,9 +60,9 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-$(call inherit-product-if-exists, vendor/lenovo/a1/a1-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/a1/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lenovo/A1_07/overlay
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -84,8 +84,8 @@ PRODUCT_PACKAGES += \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
     libVendor_ti_omx \
-    sensors.a1 \
-    lights.a1 \
+    sensors.A1_07 \
+    lights.A1_07 \
     alsa.default \
     alsa.omap3 \
     acoustics.default \
@@ -100,7 +100,7 @@ PRODUCT_LOCALES += hdpi
 
 # Vold
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/vold.a1.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/etc/vold.A1_07.fstab:system/etc/vold.fstab
 
 # Media Profile
 PRODUCT_COPY_FILES += \
@@ -120,7 +120,7 @@ PRODUCT_COPY_FILES += \
 #        $(LOCAL_PATH)/sd_ramdisk_packer.sh:sd_ramdisk_packer.sh
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/lenovo/a1/kernel
+    LOCAL_KERNEL := device/lenovo/A1_07/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -170,5 +170,5 @@ FRAMEWORKS_BASE_SUBDIRS += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_a1
-PRODUCT_DEVICE := a1
+PRODUCT_NAME := full_A1_07
+PRODUCT_DEVICE := A1_07

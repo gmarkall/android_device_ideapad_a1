@@ -20,5 +20,5 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo full_a1-eng
-add_lunch_combo cyanogen_a1-eng
+add_lunch_combo full_A1_07-eng
+add_lunch_combo cyanogen_A1_07-eng

@@ -15,7 +15,7 @@
 # limitations under the License.
 
 DEVICE=A1_07
-MANUFACTURER=$MANUFACTURER
+MANUFACTURER=lenovo
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 

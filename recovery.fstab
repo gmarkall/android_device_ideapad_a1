@@ -5,4 +5,4 @@
 /data   ext3    /dev/block/mmcblk0p3
 /.secure        ext3    /dev/block/mmcblk0p4
 /sdcard     vfat        /dev/block/mmcblk0p5
-/sdcard/removable_sdcard        vfat    /dev/block/mmcblk1p1
+/emmc       vfat    /dev/block/mmcblk1p1   /dev/block/mmcblk1

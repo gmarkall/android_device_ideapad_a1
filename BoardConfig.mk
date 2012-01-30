@@ -1,3 +1,6 @@
+
+USE_CAMERA_STUB := true
+
 # inherit from the proprietary version
 -include vendor/lenovo/A1_07/BoardConfigVendor.mk
 
@@ -24,6 +27,13 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # check this
 
 TARGET_PREBUILT_KERNEL := device/lenovo/A1_07/kernel
 
+BOARD_HAS_SDCARD_INTERNAL := true
+BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
+BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk0p5
+BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/mmcblk0p5
+BOARD_VOLD_MAX_PARTITIONS := 5
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/A1_07/recovery/recovery_ui.c
@@ -39,7 +49,6 @@ OMAP3_GL := true
 
 # Camera
 #BOARD_USES_TI_CAMERA_HAL := true
-USE_CAMERA_STUB := true
 
 # Bluetooth
 #BOARD_HAVE_BLUETOOTH := true

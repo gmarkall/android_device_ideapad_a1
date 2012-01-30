@@ -15,8 +15,8 @@
 ## Example of a standard sdcard mount for the emulator / Dream
 # Mounts the first usable partition of the specified device
 #dev_mount sdcard /mnt/sdcard auto /devices/platform/mmci-omap-hs.0/mmc_host/mmc0
-dev_mount removable_sdcard /mnt/sdcard/removable_sdcard auto /devices/platform/mmci-omap-hs.0/mmc_host/mmc1
-dev_mount sdcard /mnt/sdcard 3 /devices/platform/mmci-omap-hs.0/mmc_host/mmc0
+dev_mount sdcard /mnt/sdcard auto /devices/platform/mmci-omap-hs.0/mmc_host/mmc1
+dev_mount emmc /mnt/emmc 5 /devices/platform/mmci-omap-hs.0/mmc_host/mmc0
 ## Example of a dual card setup
 # dev_mount left_sdcard  /sdcard1  auto /devices/platform/goldfish_mmc.0 /devices/platform/msm_sdcc.2/mmc_host/mmc1
 # dev_mount right_sdcard /sdcard2  auto /devices/platform/goldfish_mmc.1 /devices/platform/msm_sdcc.3/mmc_host/mmc1

@@ -27,6 +27,21 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # check this
 
 TARGET_PREBUILT_KERNEL := device/lenovo/A1_07/kernel
 
+# Wifi
+BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
+BOARD_WLAN_DEVICE           := bcm4329
+WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
+WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/apsta.bin"
+WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/rtecdc.bin nvram_path=/vendor/firmware/nvram.txt"
+WIFI_DRIVER_MODULE_NAME     := "dhd"
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+
+
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk0p5

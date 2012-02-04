@@ -21,27 +21,10 @@ include $(call all-named-subdir-makefiles, $(common_ti_dirs))
 
 $(call inherit-product, build/target/product/full_base.mk)
 
-# Place kernels to enable switching between 16 and 32 bit framebuffers
-# 16 bit can be use for a large increase in GFX performance
-# 32 bit is default
-#PRODUCT_COPY_FILES += \
-    device/lenovo/a1/prebuilt/boot/kernel16:/system/bin/kernel/uImage16 \
-    device/lenovo/a1/prebuilt/boot/kernel32:/system/bin/kernel/uImage32
-
 # Get a proper init file
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/init.A1_07.rc:root/init.target.rc \
     device/lenovo/A1_07/ueventd.A1_07.rc:root/ueventd.A1_07.rc
-
-# Place wifi files
-#PRODUCT_COPY_FILES += \
-    device/lenovo/a1/prebuilt/wifi/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
-    device/lenovo/a1/prebuilt/wifi/tiwlan.ini:/system/etc/wifi/tiwlan.ini \
-    device/lenovo/a1/prebuilt/wifi/firmware.bin:/system/etc/wifi/firmware.bin
-
-# Place bluetooth firmware
-#PRODUCT_COPY_FILES += \
-    device/lenovo/a1/firmware/TIInit_7.2.31.bts:/system/etc/firmware/TIInit_7.2.31.bts
 
 # Place prebuilt from omapzoom
 PRODUCT_COPY_FILES += \
@@ -106,43 +89,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/etc/media_profiles.xml:system/etc/media_profiles.xml
 
-# Misc # TODO: Find a better home for this
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/clear_bootcnt.sh:/system/bin/clear_bootcnt.sh
-
-# update the battery log info
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/log_battery_data.sh:/system/bin/log_battery_data.sh
-
-# SD ramdisk packer script - by request - execute manually as-needed
-
-#PRODUCT_COPY_FILES += \
-#        $(LOCAL_PATH)/sd_ramdisk_packer.sh:sd_ramdisk_packer.sh
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     LOCAL_KERNEL := device/lenovo/A1_07/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-#ifeq ($(TARGET_PREBUILT_BOOTLOADER),)
-#    LOCAL_BOOTLOADER := device/lenovo/a1/prebuilt/boot/MLO
-#else
-#    LOCAL_BOOTLOADER := $(TARGET_PREBUILT_BOOTLOADER)
-#endif
-#
-#ifeq ($(TARGET_PREBUILT_2NDBOOTLOADER),)
-#    LOCAL_2NDBOOTLOADER := device/lenovo/a1/prebuilt/boot/u-boot.bin
-#else
-#    LOCAL_2NDBOOTLOADER := $(TARGET_PREBUILT_2NDBOOTLOADER)
-#endif
-
-
 # Boot files
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel #\
     $(LOCAL_BOOTLOADER):bootloader \
     $(LOCAL_2NDBOOTLOADER):2ndbootloader
+
+# Wifi files
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/dhd.ko:system/lib/modules/dhd.ko \
+    device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt
 
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -155,7 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.hwrotation=270 \
     ro.setupwizard.enable_bypass=1 \
     keyguard.no_require_sim=1 \
-    wifi.interface=tiwlan0 \
+    wifi.interface=eth0 \
     alsa.mixer.playback.master=default \
     alsa.mixer.capture.master=Analog \
     dalvik.vm.heapsize=32m \

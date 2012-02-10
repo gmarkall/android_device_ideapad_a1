@@ -1,13 +1,13 @@
 on init
-    export EXTERNAL_REMOVABLE_SDCARD /mnt/sdcard/removable_sdcard
+   
+#    export EXTERNAL_REMOVABLE_SDCARD /mnt/sdcard/removable_sdcard
+    export PHONE_STORAGE /mnt/emmc
     export DSP_PATH /system/lib/dsp
     export DEFAULT_BASEIMAGE /system/lib/dsp/baseimage.dof
     export QOSDYN_FILE /system/lib/dsp/qosdyn_3430.dll64P
 
-# Location of BT firmware files
-#    export BT_FW_PATH /system/lib/firmware
-
 # create mountpoints
+    mkdir /mnt/emmc
     mkdir /mnt/usbdisk 0000 system system
     mkdir /.secure 0000 system system
     mkdir /debug 0000 system system
@@ -221,19 +221,19 @@ write /sys/class/rfkill/rfkill3/state 0
         user root
         oneshot
 
-    service ril-daemon /system/bin/rild -l /system/lib/libsierra-ril.so -- -d /dev/ttyUSB2
+    #service ril-daemon /system/bin/rild -l /system/lib/libsierra-ril.so -- -d /dev/ttyUSB2
     #service ril-daemon /system/bin/rild -l /system/lib/libenforaedg308-ril.so -- -d /dev/pts/0
-    socket rild stream 660 root radio
-    socket rild-debug stream 660 radio system
-    user root
-    group radio cache inet misc audio
+    #socket rild stream 660 root radio
+    #socket rild-debug stream 660 radio system
+    #user root
+    #group radio cache inet misc audio
 
 ### start for pppd settings
-    service pppd_3g /system/bin/pppd call options.ppp
-    user root radio
-    group radio cache inet misc
-    disabled
-    oneshot
+    #service pppd_3g /system/bin/pppd call options.ppp
+    #user root radio
+    #group radio cache inet misc
+    #disabled
+    #oneshot
 
     service ins_ehci /system/bin/insmod /system/etc/ppp/ehci-hcd.ko
         user root radio
@@ -276,25 +276,25 @@ write /sys/class/rfkill/rfkill3/state 0
         oneshot
 
 
-#    service hciattach /system/bin/brcm_patchram_plus -d --enable_hci  --patchram /system/proprietary/bt/bcm4329.hcd --baudrate 3000000 --bd_addr 00:01:36:87:65:43  /dev/ttyO1
-#        user root
+    service hciattach /system/bin/brcm_patchram_plus -d --enable_hci  --patchram /vendor/firmware/bcm4329.hcd --baudrate 3000000 --bd_addr 00:01:36:87:65:43  /dev/ttyO1
+        user root
 # changing user to root from bluetooth is a potential security issue
-#    group bluetooth net_bt_admin misc
-#        disabled
-#        oneshot
+    group bluetooth net_bt_admin misc
+        disabled
+        oneshot
 
 # OMAP specific services start here
 
 # load DSP firmware
-    service baseimage /system/bin/cexec.out /system/lib/dsp/baseimage.dof
+    service baseimage /system/bin/dspexec /system/lib/dsp/baseimage.dof
         user root
         group audio
         oneshot
 
-    service pppd_gprs /etc/init.gprs-pppd /dev/pts/1
-       user root
-       group radio cache inet misc
-       disabled
+#    service pppd_gprs /etc/init.gprs-pppd /dev/pts/1
+#       user root
+#       group radio cache inet misc
+#       disabled
 
 #&*&*&*JJ1 Remove camera FW3A service
 #    service fw3a /system/bin/fw3a_core
@@ -317,9 +317,9 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/misc/wif
         disabled
         oneshot
         
-service fxn_wifi_reset system/bin/init.fxn_wifi.sh
-    user root
-    oneshot
+#service fxn_wifi_reset system/bin/init.fxn_wifi.sh
+#    user root
+#    oneshot
 
 # add for gps test
     service gps-test /system/bin/scmd_4751 /dev/ttyO0

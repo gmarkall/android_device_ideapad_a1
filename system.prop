@@ -1,3 +1,7 @@
 #
-# system.prop for test
+# system.prop for A1_07
 #
+
+ro.additionalmounts=/mnt/emmc;/mnt/usbdisk
+ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
+

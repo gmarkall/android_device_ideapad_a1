@@ -14,6 +14,7 @@ on init
 
 # Backwards Compat - XXX: Going away in G*
     symlink /mnt/usbdisk /usbdisk
+    symlink /mnt/emmc /emmc
 
 #   &*&*&*& SW1_20110705_Change for CTS permission test
     mkdir /tmp 0775

@@ -1,0 +1,1 @@
+echo "1" > /sys/devices/platform/omap_wdt/watchdog_reset

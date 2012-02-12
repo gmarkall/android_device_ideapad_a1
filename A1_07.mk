@@ -26,6 +26,10 @@ PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/init.A1_07.rc:root/init.target.rc \
     device/lenovo/A1_07/ueventd.A1_07.rc:root/ueventd.A1_07.rc
 
+# Watchdog reset
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/etc/99watchdog:system/etc/init.d/99watchdog
+
 # Place prebuilt from omapzoom
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/prebuilt/GFX/system/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so 

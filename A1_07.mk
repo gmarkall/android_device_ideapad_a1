@@ -111,6 +111,11 @@ PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt \
     device/lenovo/A1_07/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
+# Gps files
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/glconfig.xml:system/vendor/gps/glconfig.xml \
+    device/lenovo/A1_07/glgps:system/vendor/bin/glgps
+
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \

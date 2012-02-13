@@ -329,7 +329,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/misc/wif
 		oneshot
         
 # add for GPS
-    service gps-daemon /system/bin/glgps -c /system/etc/gps/glconfig.xml
+    service gps-daemon /system/vendor/bin/glgps -c /system/vendor/gps/glconfig.xml
 		user root
 		group root
 

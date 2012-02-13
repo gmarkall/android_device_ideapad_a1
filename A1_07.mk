@@ -108,7 +108,7 @@ PRODUCT_COPY_FILES += \
 # Wifi files
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/dhd.ko:system/lib/modules/dhd.ko \
-    device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt
+    device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt \
     device/lenovo/A1_07/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
 # Set property overrides

@@ -83,7 +83,7 @@ PRODUCT_PACKAGES += \
     libreference-ril
 
 # Use medium-density artwork where available
-PRODUCT_LOCALES += hdpi
+PRODUCT_LOCALES += mdpi
 
 # Vold
 PRODUCT_COPY_FILES += \

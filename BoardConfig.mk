@@ -68,6 +68,9 @@ OMAP3_GL := true
 # Bluetooth
 #BOARD_HAVE_BLUETOOTH := true
 
+# Vibrator
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lenovo/A1_07/vibrator.c
+
 BOARD_USES_ALSA_AUDIO := true
 BUILD_WITH_ALSA_UTILS := true
 BOARD_USES_TI_OMAP_MODEM_AUDIO := true

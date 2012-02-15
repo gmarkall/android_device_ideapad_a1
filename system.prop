@@ -4,4 +4,5 @@
 
 ro.additionalmounts=/mnt/emmc;/mnt/usbdisk
 ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
+persist.sys.scrollingcache=3
 

@@ -65,9 +65,6 @@ OMAP3_GL := true
 # Camera
 #BOARD_USES_TI_CAMERA_HAL := true
 
-# Bluetooth
-#BOARD_HAVE_BLUETOOTH := true
-
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lenovo/A1_07/vibrator.c
 

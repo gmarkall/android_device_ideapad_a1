@@ -171,6 +171,9 @@ on boot
 # Enablig DVFS with ondemand governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
 
+# Power Management
+    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 40000
+
 # Permissions for setting the DSP Frequency
     chown media root /sys/power/dsp_freq
 

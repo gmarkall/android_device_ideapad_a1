@@ -1,6 +1,4 @@
 
-USE_CAMERA_STUB := true
-
 # inherit from the proprietary version
 -include vendor/lenovo/A1_07/BoardConfigVendor.mk
 
@@ -63,7 +61,10 @@ TARGET_NO_RADIOIMAGE := true
 OMAP3_GL := true
 
 # Camera
-#BOARD_USES_TI_CAMERA_HAL := true
+USE_CAMERA_STUB := false
+ifeq ($(USE_CAMERA_STUB),false)
+BOARD_CAMERA_LIBRARIES := libcamera
+endif
 
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lenovo/A1_07/vibrator.c
@@ -83,7 +84,6 @@ OMX_VENDOR_INCLUDES := \
 OMX_VENDOR_WRAPPER := TI_OMX_Wrapper
 BOARD_OPENCORE_LIBRARIES := libOMX_Core
 BOARD_OPENCORE_FLAGS := -DHARDWARE_OMX=1
-BOARD_CAMERA_LIBRARIES := libcamera
 endif
 
 ifdef OMAP_ENHANCEMENT

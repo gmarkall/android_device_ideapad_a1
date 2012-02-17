@@ -202,6 +202,9 @@ on boot
     setprop ro.kernel.android.gps gps
 # GPS --
 
+    mkdir /data/gps 0777 system system
+    chmod 0777 /data/gps
+
 # add for GPS
 on boot
 write /sys/class/rfkill/rfkill2/state 0

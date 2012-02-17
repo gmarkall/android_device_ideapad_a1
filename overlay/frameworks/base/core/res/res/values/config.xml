@@ -38,8 +38,14 @@ limitations under the License.
         Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
         <item>1</item>
-        <item>500</item>
-        <item>10240</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>50</item>
+        <item>70</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -47,8 +53,15 @@ limitations under the License.
             than the size of the config_autoBrightnessLevels array.
             -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>110</item>
         <item>130</item>
+        <item>150</item>
+        <item>170</item>
+        <item>190</item>
+        <item>210</item>
+        <item>230</item>
         <item>255</item>
     </integer-array>
 
@@ -57,8 +70,15 @@ limitations under the License.
         than the size of the config_autoBrightnessLevels array.
         -->
      <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>70</item>
-        <item>130</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
         <item>255</item>
     </integer-array>
 
@@ -68,9 +88,16 @@ limitations under the License.
         Passion has no keyboard so all values are zero.
         -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>70</item>
-        <item>130</item>
-        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
     </integer-array>
 
     <!-- This string array should be overridden by the device to present a list of network
@@ -123,7 +150,7 @@ limitations under the License.
     <!-- Enable the screen-off animation -->
     <bool name="config_enableScreenOffAnimation">true</bool>
 
-    <bool name="config_animateScreenLights">true</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- The duration (in milliseconds) that the radio will scan for a signal
         when there's no network connection. If the scan doesn't timeout, use zero -->

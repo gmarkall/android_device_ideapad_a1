@@ -135,6 +135,10 @@ adb pull /system/lib/hw/gps.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/propr
 adb pull /system/lib/hw/lights.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lights.omap3.so
 adb pull /system/lib/hw/sensors.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.omap3.so
 
+# Camera
+adb pull /system/lib/libcamera.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libcamera.so
+adb pull /system/lib/libcamera_client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libcamera_client.so
+
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/device-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
 #
@@ -262,6 +266,9 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVG.so:/system/lib/libOpenVG.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpvr2d.so:/system/lib/libpvr2d.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsrv_init.so:/system/lib/libsrv_init.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so  \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera.so:/system/lib/libcamera.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera_client.so:/system/lib/libcamera_client.so \\
 
 EOF
 

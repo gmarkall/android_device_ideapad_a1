@@ -71,13 +71,10 @@ PRODUCT_PACKAGES += \
     libOMX.TI.Video.Decoder \
     libOMX.TI.Video.encoder \
     libVendor_ti_omx \
-    sensors.A1_07 \
     lights.A1_07 \
     alsa.default \
-    alsa.omap3 \
     acoustics.default \
-    libomap_mm_library_jni \
-    hwprops
+    libomap_mm_library_jni
 
 PRODUCT_PACKAGES += \
     libreference-ril

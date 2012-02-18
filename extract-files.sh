@@ -132,7 +132,6 @@ adb pull /system/lib/egl/libGLESv2_POWERVR_SGX530_125.so ../../../vendor/$MANUFA
 # HW folder
 adb pull /system/lib/hw/alsa.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/alsa.omap3.so
 adb pull /system/lib/hw/gps.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.omap3.so
-adb pull /system/lib/hw/lights.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lights.omap3.so
 adb pull /system/lib/hw/sensors.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.omap3.so
 
 # Camera
@@ -257,7 +256,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/gralloc.omap3.so:/system/lib/hw/gralloc.omap3.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/alsa.omap3.so:/system/lib/hw/alsa.omap3.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.omap3.so:/system/lib/hw/gps.omap3.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/lights.omap3.so:/system/lib/hw/lights.omap3.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.omap3.so:/system/lib/hw/sensors.omap3.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libusc.so:/system/lib/libusc.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libglslcompiler.so:/system/lib/libglslcompiler.so \\

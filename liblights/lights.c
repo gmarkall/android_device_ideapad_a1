@@ -91,7 +91,7 @@ set_light_backlight(struct light_device_t* dev,
     int brightness = rgb_to_brightness(state);
 
     // restrict lowest brightness setting to 50
-    if (brightness < 50) {
+    if (brightness < 50 && brightness > 0) {
         brightness = 50;
     }
 

@@ -136,7 +136,10 @@ limitations under the License.
         it is removable; if it is built in to the device, it is not removable.
         The default product has external storage on an SD card, which is
         removable. -->
-    <bool name="config_externalStorageRemovable">false</bool>
+    <bool name="config_externalStorageRemovable">true</bool>
+
+    <!-- Default color for notification LED. -->
+    <color name="config_defaultNotificationColor">#ffffffff</color>
 
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
@@ -155,5 +158,23 @@ limitations under the License.
     <!-- The duration (in milliseconds) that the radio will scan for a signal
         when there's no network connection. If the scan doesn't timeout, use zero -->
     <integer name="config_radioScanningTimeout">1</integer>
+
+    <!-- toggles weather device is tablet or phone. right now,
+        tablets are know to have soft buttons, but phones have harware
+        buttons. this might change in the future - especially when the
+        honeycomb modifications become available for phones -->
+    <bool name="cm_default_is_tablet">true</bool>
+
+    <!-- toggles weather device uses soft buttons or got hardware
+        buttons. as the time of writing for android 2.3.3. all soft button
+        enabled devices are tablets, all disabled are phones. -->
+    <bool name="cm_default_has_soft_buttons">true</bool>
+
+    <!-- hide the onscreen buttons by default -->
+    <bool name="cm_default_show_soft_home">false</bool>
+    <bool name="cm_default_show_soft_menu">false</bool>
+    <bool name="cm_default_show_soft_back">false</bool>
+    <bool name="cm_default_show_soft_search">false</bool>
+    <bool name="cm_default_show_soft_quick_na">false</bool>
 
 </resources>

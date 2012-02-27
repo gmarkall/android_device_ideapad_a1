@@ -19,7 +19,28 @@ MANUFACTURER=lenovo
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 
-# DSP related libs and firmware
+# HAL
+adb pull /system/lib/hw/gralloc.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gralloc.omap3.so
+adb pull /system/lib/hw/alsa.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/alsa.omap3.so
+adb pull /system/lib/hw/sensors.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.omap3.so
+
+# GPS
+adb pull /system/lib/hw/gps.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.omap3.so
+
+# PVRSGX
+adb pull /system/lib/egl/libGLESv1_CM_POWERVR_SGX530_125.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv1_CM_POWERVR_SGX530_125.so
+adb pull /system/lib/egl/libEGL_POWERVR_SGX530_125.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libEGL_POWERVR_SGX530_125.so
+adb pull /system/lib/egl/libGLESv2_POWERVR_SGX530_125.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv2_POWERVR_SGX530_125.so
+adb pull /system/lib/libsrv_um.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsrv_um.so
+adb pull /system/lib/libsrv_init.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsrv_init.so
+adb pull /system/lib/libpvr2d.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpvr2d.so
+adb pull /system/lib/libIMGegl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libIMGegl.so
+adb pull /system/lib/libpvrANDROID_WSEGL.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpvrANDROID_WSEGL.so
+adb pull /system/lib/libusc.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libusc.so
+adb pull /system/lib/libglslcompiler.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libglslcompiler.so
+adb pull /system/bin/pvrsrvinit ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
+
+# DSP firmware
 adb pull /system/lib/dsp/720p_h264vdec_sn.dll64P ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/720p_h264vdec_sn.dll64P
 adb pull /system/lib/dsp/720p_h264venc_sn.dll64P ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/720p_h264venc_sn.dll64P
 adb pull /system/lib/dsp/720p_mp4vdec_sn.dll64P ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/720p_mp4vdec_sn.dll64P
@@ -73,18 +94,7 @@ adb pull /system/lib/dsp/wmadec_sn.dll64P ../../../vendor/$MANUFACTURER/$DEVICE/
 adb pull /system/lib/dsp/wmv9dec_sn.dll64P ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wmv9dec_sn.dll64P
 adb pull /system/lib/dsp/yuvconvert.l64p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/yuvconvert.l64p
 
-# DSP Codecs
-adb pull /system/lib/libOMX.TI.G722.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G722.decode.so
-adb pull /system/lib/libOMX.TI.G729.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G729.encode.so
-adb pull /system/lib/libOMX.TI.AMR.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.AMR.decode.so
-adb pull /system/lib/libLCML.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libLCML.so
-adb pull /system/lib/libbridge.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libbridge.so
-adb pull /system/lib/libOMX.TI.MP3.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.MP3.decode.so
-adb pull /system/lib/libOMX.TI.JPEG.encoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.JPEG.encoder.so
-adb pull /system/lib/libOMX.TI.WBAMR.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.WBAMR.decode.so
-adb pull /system/lib/libOMX.TI.G722.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G722.encode.so
-adb pull /system/lib/libOMX.TI.Video.Decoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.Video.Decoder.so
-adb pull /system/lib/libOMX.TI.AAC.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.AAC.encode.so
+# OMX 720p libraries
 adb pull /system/lib/libOMX.ITTIAM.AAC.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.ITTIAM.AAC.decode.so
 adb pull /system/lib/libOMX.ITTIAM.AAC.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.ITTIAM.AAC.encode.so
 adb pull /system/lib/libOMX.ITTIAM.WMA.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.ITTIAM.WMA.decode.so
@@ -92,47 +102,6 @@ adb pull /system/lib/libOMX.TI.720P.Decoder.so ../../../vendor/$MANUFACTURER/$DE
 adb pull /system/lib/libOMX.TI.720P.Encoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.720P.Encoder.so
 adb pull /system/lib/libOMX.TI.h264.splt.Encoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.h264.splt.Encoder.so
 adb pull /system/lib/libOMX.TI.mp4.splt.Encoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.mp4.splt.Encoder.so
-adb pull /system/lib/libPERF.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libPERF.so
-adb pull /system/lib/libOMX.TI.ILBC.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.ILBC.encode.so
-adb pull /system/lib/libOMX.TI.AAC.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.AAC.decode.so
-adb pull /system/lib/libOMX.TI.G726.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G726.decode.so
-adb pull /system/lib/libOMX.TI.VPP.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.VPP.so
-adb pull /system/lib/libOMX.TI.JPEG.decoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.JPEG.decoder.so
-adb pull /system/lib/libOMX.TI.Video.encoder.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.Video.encoder.so
-adb pull /system/lib/libOMX_Core.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX_Core.so
-adb pull /system/lib/libOMX.TI.G711.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G711.decode.so
-adb pull /system/lib/libOMX.TI.WBAMR.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.WBAMR.encode.so
-adb pull /system/lib/libomap_mm_library_jni.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libomap_mm_library_jni.so
-adb pull /system/lib/libOMX.TI.G729.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G729.decode.so
-adb pull /system/lib/libOMX.TI.WMA.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.WMA.decode.so
-adb pull /system/lib/libOMX.TI.ILBC.decode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.ILBC.decode.so
-adb pull /system/lib/libOMX.TI.G726.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G726.encode.so
-adb pull /system/lib/libOMX.TI.G711.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.G711.encode.so
-adb pull /system/lib/libOMX.TI.AMR.encode.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOMX.TI.AMR.encode.so
-
-# SGX SDK
-adb pull /system/lib/libIMGegl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libIMGegl.so
-adb pull /system/lib/egl/libGLES_android.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLES_android.so
-adb pull /system/lib/egl/egl.cfg ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/egl.cfg
-adb pull /system/bin/pvrsrvinit ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
-adb pull /system/lib/libsrv_um.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsrv_um.so
-adb pull /system/lib/hw/gralloc.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gralloc.omap3.so
-adb pull /system/lib/libusc.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libusc.so
-adb pull /system/lib/libglslcompiler.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libglslcompiler.so
-adb pull /system/lib/libPVRScopeServices.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libPVRScopeServices.so
-adb pull /system/lib/libpvrANDROID_WSEGL.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpvrANDROID_WSEGL.so
-adb pull /system/lib/libOpenVG.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOpenVG.so
-adb pull /system/lib/libpvr2d.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpvr2d.so
-adb pull /system/lib/libsrv_init.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsrv_init.so
-adb pull /system/lib/libOpenVGU.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOpenVGU.so
-adb pull /system/lib/egl/libGLESv1_CM_POWERVR_SGX530_125.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv1_CM_POWERVR_SGX530_125.so
-adb pull /system/lib/egl/libEGL_POWERVR_SGX530_125.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libEGL_POWERVR_SGX530_125.so
-adb pull /system/lib/egl/libGLESv2_POWERVR_SGX530_125.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv2_POWERVR_SGX530_125.so
-
-# HW folder
-adb pull /system/lib/hw/alsa.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/alsa.omap3.so
-adb pull /system/lib/hw/gps.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.omap3.so
-adb pull /system/lib/hw/sensors.omap3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.omap3.so
 
 # Camera
 adb pull /system/lib/libcamera.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libcamera.so
@@ -156,17 +125,6 @@ adb pull /system/lib/libcamera_client.so ../../../vendor/$MANUFACTURER/$DEVICE/p
 # This file is generated by device/__MANUFACTURER__/__DEVICE__/extract-files.sh - DO NOT EDIT
 
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G722.decode.so:/system/lib/libOMX.TI.G722.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G729.encode.so:/system/lib/libOMX.TI.G729.encode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.AMR.decode.so:/system/lib/libOMX.TI.AMR.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libLCML.so:/system/lib/libLCML.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libbridge.so:/system/lib/libbridge.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.MP3.decode.so:/system/lib/libOMX.TI.MP3.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.JPEG.encoder.so:/system/lib/libOMX.TI.JPEG.encoder.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.WBAMR.decode.so:/system/lib/libOMX.TI.WBAMR.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G722.encode.so:/system/lib/libOMX.TI.G722.encode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.Video.Decoder.so:/system/lib/libOMX.TI.Video.Decoder.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.AAC.encode.so:/system/lib/libOMX.TI.AAC.encode.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.ITTIAM.AAC.decode.so:/system/lib/libOMX.ITTIAM.AAC.decode.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.ITTIAM.AAC.encode.so:/system/lib/libOMX.ITTIAM.AAC.encode.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.ITTIAM.WMA.decode.so:/system/lib/libOMX.ITTIAM.WMA.decode.so \\
@@ -174,23 +132,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.720P.Encoder.so:/system/lib/libOMX.TI.720P.Encoder.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.h264.splt.Encoder.so:/system/lib/libOMX.TI.h264.splt.Encoder.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.mp4.splt.Encoder.so:/system/lib/libOMX.TI.mp4.splt.Encoder.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libPERF.so:/system/lib/libPERF.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.ILBC.encode.so:/system/lib/libOMX.TI.ILBC.encode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.AAC.decode.so:/system/lib/libOMX.TI.AAC.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G726.decode.so:/system/lib/libOMX.TI.G726.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.VPP.so:/system/lib/libOMX.TI.VPP.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.JPEG.decoder.so:/system/lib/libOMX.TI.JPEG.decoder.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.Video.encoder.so:/system/lib/libOMX.TI.Video.encoder.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX_Core.so:/system/lib/libOMX_Core.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G711.decode.so:/system/lib/libOMX.TI.G711.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.WBAMR.encode.so:/system/lib/libOMX.TI.WBAMR.encode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libomap_mm_library_jni.so:/system/lib/libomap_mm_library_jni.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G729.decode.so:/system/lib/libOMX.TI.G729.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.WMA.decode.so:/system/lib/libOMX.TI.WMA.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.ILBC.decode.so:/system/lib/libOMX.TI.ILBC.decode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G726.encode.so:/system/lib/libOMX.TI.G726.encode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.G711.encode.so:/system/lib/libOMX.TI.G711.encode.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOMX.TI.AMR.encode.so:/system/lib/libOMX.TI.AMR.encode.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libIMGegl.so:/system/lib/libIMGegl.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/720p_h264vdec_sn.dll64P:/system/lib/dsp/720p_h264vdec_sn.dll64P \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/720p_h264venc_sn.dll64P:/system/lib/dsp/720p_h264venc_sn.dll64P \\
@@ -244,10 +185,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wmadec_sn.dll64P:/system/lib/dsp/wmadec_sn.dll64P \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wmv9dec_sn.dll64P:/system/lib/dsp/wmv9dec_sn.dll64P \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/yuvconvert.l64p:/system/lib/dsp/yuvconvert.l64p \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLES_android.so:/system/lib/egl/libGLES_android.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/egl.cfg:/system/lib/egl/egl.cfg \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/pvrsrvinit:/system/bin/pvrsrvinit \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVGU.so:/system/lib/libOpenVGU.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libEGL_POWERVR_SGX530_125.so:/system/lib/egl/libEGL_POWERVR_SGX530_125.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv2_POWERVR_SGX530_125.so:/system/lib/egl/libGLESv2_POWERVR_SGX530_125.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv1_CM_POWERVR_SGX530_125.so:/system/lib/egl/libGLESv1_CM_POWERVR_SGX530_125.so \\
@@ -259,10 +197,8 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.omap3.so:/system/lib/hw/sensors.omap3.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libusc.so:/system/lib/libusc.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libglslcompiler.so:/system/lib/libglslcompiler.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libPVRScopeServices.so:/system/lib/libPVRScopeServices.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpvrANDROID_WSEGL.so:/system/lib/libpvrANDROID_WSEGL.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVG.so:/system/lib/libOpenVG.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpvr2d.so:/system/lib/libpvr2d.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpvrANDROID_WSEGL.so:/system/lib/libpvrANDROID_WSEGL.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsrv_init.so:/system/lib/libsrv_init.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so  \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera.so:/system/lib/libcamera.so \\

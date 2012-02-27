@@ -293,7 +293,7 @@ write /sys/class/rfkill/rfkill3/state 0
 # OMAP specific services start here
 
 # load DSP firmware
-    service baseimage /system/bin/dspexec /system/lib/dsp/baseimage.dof
+    service baseimage /system/bin/cexec.out /system/lib/dsp/baseimage.dof
         user root
         group audio
         oneshot

@@ -132,6 +132,10 @@ PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/glconfig.xml:system/vendor/gps/glconfig.xml \
     device/lenovo/A1_07/glgps:system/vendor/bin/glgps
 
+# Modified sensor service
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/libsensorservice.so:system/lib/libsensorservice.so
+
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \

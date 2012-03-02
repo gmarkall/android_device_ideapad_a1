@@ -1,4 +1,3 @@
-
 # inherit from the proprietary version
 -include vendor/lenovo/A1_07/BoardConfigVendor.mk
 
@@ -11,7 +10,6 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_BOOTLOADER_BOARD_NAME := A1_07
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 msmsdcc_sdioirq=1 wire.search_count=5

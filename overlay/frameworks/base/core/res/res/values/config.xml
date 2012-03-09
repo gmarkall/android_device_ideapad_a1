@@ -21,6 +21,9 @@ limitations under the License.
         at performing a blur. Used by parts of the UI to turn off
         the blur effect where it isn't worth the performance hit. -->
     <bool name="config_sf_slowBlur">true</bool>
+    
+    <!-- Disable menu hard key in non-pattern lockscreen -->
+    <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
         config_hardware_automatic_brightness_available is not set, so we will use software implementation -->

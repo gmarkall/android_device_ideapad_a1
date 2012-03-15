@@ -150,7 +150,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=eth0 \
     alsa.mixer.playback.master=default \
     alsa.mixer.capture.master=Analog \
-    dalvik.vm.heapsize=32m \
+    dalvik.vm.heapsize=48m \
     ro.opengles.version=131072
 
 FRAMEWORKS_BASE_SUBDIRS += \

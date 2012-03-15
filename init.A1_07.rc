@@ -1,27 +1,22 @@
 on init
-   
-#    export EXTERNAL_REMOVABLE_SDCARD /mnt/sdcard/removable_sdcard
     export PHONE_STORAGE /mnt/emmc
     export DSP_PATH /system/lib/dsp
     export DEFAULT_BASEIMAGE /system/lib/dsp/baseimage.dof
     export QOSDYN_FILE /system/lib/dsp/qosdyn_3430.dll64P
 
-# create mountpoints
+    # Create mountpoints
     mkdir /mnt/emmc
     mkdir /mnt/usbdisk 0000 system system
+    symlink /mnt/usbdisk /usbdisk
+    symlink /mnt/emmc /emmc
     mkdir /.secure 0000 system system
     mkdir /debug 0000 system system
 
-# Backwards Compat - XXX: Going away in G*
-    symlink /mnt/usbdisk /usbdisk
-    symlink /mnt/emmc /emmc
-
-#   &*&*&*& SW1_20110705_Change for CTS permission test
+    # for A1_07
     mkdir /tmp 0775
 
 on fs
-
-# Mount Android Filesystem
+    # Mount Android Filesystem
     mount ext3 /dev/block/mmcblk0p1 /system
     chmod 0755 /system
     mount ext3 /dev/block/mmcblk0p1 /system ro remount
@@ -33,18 +28,17 @@ on fs
     chown system system /.secure
 
 on post-fs
-
-# create data_tmp folder fot bt mac address
+    # Create data_tmp folder fot bt mac address
     mkdir /data/tmp 0777 system system
 
-# create basic filesystem structure
+    # Create basic filesystem structure
     mkdir /data/misc/dhcp 0770 dhcp dhcp
 
-# give system access to wpa_supplicant.conf for backup and restore
+    # Give system access to wpa_supplicant.conf for backup and restore
     mkdir /data/misc/wifi/sockets 0771 wifi wifi
     mkdir /data/misc/dhcp 0664 wifi wifi
 
-# change permissions for alsa nodes
+    # Permissions for alsa nodes
     symlink /dev/snd/pcmC0D0c /dev/pcmC0D0c
     symlink /dev/snd/pcmC0D0p /dev/pcmC0D0p
     symlink /dev/snd/controlC0 /dev/controlC0
@@ -54,22 +48,21 @@ on post-fs
     chown audio audio /dev/controlC0
     chown audio audio /dev/timer
 
-# change permissions for modem
+    # Permissions for modem
     mkdir /data/modem 0770 radio radio
 
-# change permissions for bridge.  Symlink search directory
+    # Permissions for bridge.  Symlink search directory
     chmod 0777 /dev/DspBridge
 
-# change permissions for Camera
+    # Permissions for Camera
     chmod 0777 /dev/video5
     chmod 0777 /dev/video0
 
-# change permissions for Overlay
+    # Permissions for Overlay
     chmod 0777 /dev/video1
     chmod 0777 /dev/video2
-#   &*&*&*& SW1_20110705_Change for CTS permission test
-# Permissions for overlay managers and display devices
-#   add by tom to fix CTS permission test
+
+    # Permissions for overlay managers and display devices
     chown system system /sys/devices/platform/usb_mass_storage/lun1/file
     chmod 0664 /sys/devices/platform/usb_mass_storage/lun1/file
     chmod 0664 /sys/devices/platform/vibrator/timer
@@ -120,7 +113,7 @@ on post-fs
     chown system camera /sys/devices/platform/omapdss/overlay1/enabled
     chown system camera /sys/devices/platform/omapdss/overlay2/enabled
 
-# Permissions for Resizer
+    # Permissions for Resizer
     chmod 0664 /sys/devices/platform/omap_vout/video4linux/video1/isprsz_mode
     chmod 0664 /sys/devices/platform/omap_vout/video4linux/video1/isprsz_enable
     chmod 0664 /sys/devices/platform/omap_vout/video4linux/video2/isprsz_mode
@@ -131,14 +124,11 @@ on post-fs
     chown system camera /sys/devices/platform/omap_vout/video4linux/video2/isprsz_mode
     chown system camera /sys/devices/platform/omap_vout/video4linux/video2/isprsz_enable
 
-#   &*&*&*& SW2_20110705_Change for CTS permission test
-
-#&*&*&*JJ1 change G-sensor owner from root to system
+    # Change G-sensor owner from root to system
     chown system system /sys/devices/platform/i2c_omap.2/i2c-2/2-0053/input/input4/enable
     chown system system /sys/devices/platform/i2c_omap.2/i2c-2/2-0053/input/input4/delay
-#&*&*&*JJ2 change G-sensor owner from root to system
 
-# change permissions for Previewer and Resizer
+    # Permissions for Previewer and Resizer
     chmod 0777 /dev/omap-previewer
     chmod 0777 /dev/omap-resizer
 
@@ -147,199 +137,159 @@ on post-fs
     chmod 0777 /dev/omap-prev2resz
 
 on boot
-
-# Set timeout value for rmnet stats.
+    # Set timeout value for rmnet stats.
     write /sys/devices/virtual/net/rmnet0/timeout_suspend 5000000
 
-# Mount Debug file system
+    # Mount Debug file system
     mkdir /debug
     mount debugfs debugfs /debug
 
-# Enabling sleep in idle path
+    # Enabling sleep in idle path
     write /debug/pm_debug/sleep_while_idle 1
 
-# Enabling Voltage OFF in idle path
+    # Enabling Voltage OFF in idle path
     write /debug/pm_debug/voltage_off_while_idle 1
 
-# Enabling OFF mode
+    # Enabling OFF mode
     write /debug/pm_debug/enable_off_mode 1
 
-# Enable SmartReflex autocompensation on VDD1 & VDD2
+    # Enable SmartReflex autocompensation on VDD1 & VDD2
     write /debug/pm_debug/smartreflex/sr_core/autocomp 1
     write /debug/pm_debug/smartreflex/sr_mpu/autocomp 1
 
-# Enablig DVFS with ondemand governor
+    # Enablig DVFS with ondemand governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
 
-# Power Management
+    # Power Management
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 40000
 
-# Permissions for setting the DSP Frequency
+    # Permissions for setting the DSP Frequency
     chown media root /sys/power/dsp_freq
 
-# WiFi ++
+    # WiFi
     chown wifi wifi /sys/class/rfkill/rfkill0/state
     chmod 0664 /sys/class/rfkill/rfkill0/state
-# WiFi --
 
-# BT ++
-#    chown bluetooth bluetooth /dev/ttyO1
+    # Bluetooth
     chown system system /dev/ttyO1
+    #chown bluetooth bluetooth /dev/ttyO1
     chmod 0664 /dev/ttyO1
     chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
     chmod 0664 /sys/class/rfkill/rfkill1/state
-# BT --
 
-# GPS ++
+    # GPS
     chown system system /dev/ttyO0
     chmod 0664 /dev/ttyO0
-#    chown system system /dev/ttyVSP0
-#    chmod 0664 /dev/ttyVSP0
-#    chown system system /dev/ttyVSP1
-#    chmod 0664 /dev/ttyVSP1
+    #chown system system /dev/ttyVSP0
+    #chmod 0664 /dev/ttyVSP0
+    #chown system system /dev/ttyVSP1
+    #chmod 0664 /dev/ttyVSP1
     chown system system /sys/class/rfkill/rfkill2/state
     chmod 0664 /sys/class/rfkill/rfkill2/state
     setprop ro.kernel.android.gps gps
-# GPS --
 
     mkdir /data/gps 0777 system system
     chmod 0777 /data/gps
 
-# add for GPS
-on boot
-write /sys/class/rfkill/rfkill2/state 0
-write /sys/class/rfkill/rfkill3/state 0
-write /sys/class/rfkill/rfkill2/state 1
-write /sys/class/rfkill/rfkill3/state 1
-write /sys/class/rfkill/rfkill3/state 0
+    write /sys/class/rfkill/rfkill2/state 0
+    write /sys/class/rfkill/rfkill3/state 0
+    write /sys/class/rfkill/rfkill2/state 1
+    write /sys/class/rfkill/rfkill3/state 1
+    write /sys/class/rfkill/rfkill3/state 0
 
-# Define modem related settings
+    # Define modem related settings
     setprop ro.radio.use-ppp yes
     setprop keyguard.no_require_sim 1
     setprop ro.config.nocheckin yes
 
-# SGX driver
+    # SGX driver
     chmod 0666 /dev/pvrsrvkm
 
     class_start default
 
 # Initialize the SGX driver
-    service pvrsrvinit /system/bin/pvrsrvinit
-        user root
-        oneshot
+service pvrsrvinit /system/bin/pvrsrvinit
+    user root
+    oneshot
 
-    #service ril-daemon /system/bin/rild -l /system/lib/libsierra-ril.so -- -d /dev/ttyUSB2
-    #service ril-daemon /system/bin/rild -l /system/lib/libenforaedg308-ril.so -- -d /dev/pts/0
+#service ril-daemon /system/bin/rild -l /system/lib/libsierra-ril.so -- -d /dev/ttyUSB2
+#service ril-daemon /system/bin/rild -l /system/lib/libenforaedg308-ril.so -- -d /dev/pts/0
     #socket rild stream 660 root radio
     #socket rild-debug stream 660 radio system
     #user root
     #group radio cache inet misc audio
 
-### start for pppd settings
-    #service pppd_3g /system/bin/pppd call options.ppp
+# pppd settings
+#service pppd_3g /system/bin/pppd call options.ppp
     #user root radio
     #group radio cache inet misc
     #disabled
     #oneshot
 
-    service ins_ehci /system/bin/insmod /system/etc/ppp/ehci-hcd.ko
-        user root radio
-        group radio cache inet misc
-        disabled
-        oneshot
+service ins_ehci /system/bin/insmod /system/etc/ppp/ehci-hcd.ko
+    user root radio
+    group radio cache inet misc
+    disabled
+    oneshot
 
-    service rm_ehci /system/bin/rmmod ehci_hcd
-        user root radio
-        group radio cache inet misc
-        disabled
-        oneshot
+service rm_ehci /system/bin/rmmod ehci_hcd
+    user root radio
+    group radio cache inet misc
+    disabled
+    oneshot
 
-#BRCM FM++
-#service btld /system/bin/logwrapper /system/bin/btld -lpm 1
-#<-- LH_SWRD_CL1_richard@20110702
-#service btld /system/bin/btld -lpm 1
-#LH_SWRD_CL1_richard@20110702 -->
+service uim /system/bin/uim-sysfs
     user root
-        group bluetooth net_bt_admin
-        disabled
-        oneshot
+    group media bluetooth
+    oneshot
 
-#STOPSHIP: Remove logwrapper and -d option before production
-#<-- LH_SWRD_CL1_richard@20110702
-#service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -d -n
-#service bluetoothd /system/bin/bluetoothd -n
-#LH_SWRD_CL1_richard@20110702 -->
-#    socket bluetooth stream 660 bluetooth bluetooth
-#    socket dbus_bluetooth stream 660 bluetooth bluetooth
-# init.rc does not yet support applying capabilities, so run as root and
-# let bluetoothd drop uid to bluetooth with the right linux capabilities
-#    group bluetooth net_bt_admin misc
-#        disabled
-#BRCM FM--
-
-    service uim /system/bin/uim-sysfs
-       user root
-       group media bluetooth
-        oneshot
-
-
-    service hciattach /system/bin/brcm_patchram_plus -d --enable_hci  --patchram /vendor/firmware/bcm4329.hcd --baudrate 3000000 --bd_addr 00:01:36:87:65:43  /dev/ttyO1
-        user root
-# changing user to root from bluetooth is a potential security issue
+service hciattach /system/bin/brcm_patchram_plus -d --enable_hci  --patchram /vendor/firmware/bcm4329.hcd --baudrate 3000000 --bd_addr 00:01:36:87:65:43  /dev/ttyO1
+    user root
+    # Changing user to root from bluetooth is a potential security issue
     group bluetooth net_bt_admin misc
-        disabled
-        oneshot
+    disabled
+    oneshot
 
-# OMAP specific services start here
+# OMAP specific services
 
 # load DSP firmware
-    service baseimage /system/bin/cexec.out /system/lib/dsp/baseimage.dof
-        user root
-        group audio
-        oneshot
+service baseimage /system/bin/cexec.out /system/lib/dsp/baseimage.dof
+    user root
+    group audio
+    oneshot
 
-#    service pppd_gprs /etc/init.gprs-pppd /dev/pts/1
-#       user root
-#       group radio cache inet misc
-#       disabled
+#service pppd_gprs /etc/init.gprs-pppd /dev/pts/1
+    #user root
+    #group radio cache inet misc
+    #disabled
 
-#&*&*&*JJ1 Remove camera FW3A service
-#    service fw3a /system/bin/fw3a_core
-#        user media
-#        group system camera
-#&*&*&*JJ2 Remove camera FW3A service
+# Camera FW3A service
+#service fw3a /system/bin/fw3a_core
+    #user media
+    #group system camera
 
 service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/misc/wifi/wpa_supplicant.conf
     socket wpa_eth0 dgram 0660 wifi system
     disabled
     oneshot
 
+service dhcpcd /system/bin/dhcpcd -ABKL eth0
+    disabled
+    oneshot
 
-    service dhcpcd /system/bin/dhcpcd -ABKL eth0
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL eth0
+    disabled
+    oneshot
 
-        disabled
-        oneshot
+service gps-test /system/bin/scmd_4751 /dev/ttyO0
+    user root
+    group root
+    oneshot
 
-    service dhcpcd_eth0 /system/bin/dhcpcd -ABKL eth0
-        disabled
-        oneshot
-        
-#service fxn_wifi_reset system/bin/init.fxn_wifi.sh
-#    user root
-#    oneshot
+service gps-daemon /system/vendor/bin/glgps -c /system/vendor/gps/glconfig.xml
+    user root
+    group root
 
-# add for gps test
-    service gps-test /system/bin/scmd_4751 /dev/ttyO0
-		user root
-		group root
-		oneshot
-        
-# add for GPS
-    service gps-daemon /system/vendor/bin/glgps -c /system/vendor/gps/glconfig.xml
-		user root
-		group root
-
-	
 #service BT_ADDR /system/bin/getBTMac.sh
-#	user root
-#	oneshot
+    #user root
+    #oneshot

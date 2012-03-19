@@ -156,8 +156,6 @@ limitations under the License.
     <!-- Enable the screen-off animation -->
     <bool name="config_enableScreenOffAnimation">true</bool>
 
-    <bool name="config_animateScreenLights">false</bool>
-
     <!-- The duration (in milliseconds) that the radio will scan for a signal
         when there's no network connection. If the scan doesn't timeout, use zero -->
     <integer name="config_radioScanningTimeout">1</integer>

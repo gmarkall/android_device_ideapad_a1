@@ -26,6 +26,11 @@ PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/init.A1_07.rc:root/init.target.rc \
     device/lenovo/A1_07/ueventd.A1_07.rc:root/ueventd.A1_07.rc
 
+
+# This file is used to install modules which dont get activated by the standard module script
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/etc/01modules:system/etc/init.d/01modules
+
 # Watchdog reset
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/etc/99watchdog:system/etc/init.d/99watchdog

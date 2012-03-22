@@ -1,0 +1,7 @@
+#!/system/bin/sh
+#
+# Load MODULES
+sleep 1
+insmod /system/lib/modules/tun.ko
+insmod /system/lib/modules/cifs.ko
+echo "+++ TUN / CIFS  activated +++";

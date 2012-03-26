@@ -39,6 +39,9 @@ static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
+		
+static char const*const BUTTON_FILE
+        = "/sys/class/leds/button-backlight/brightness";
 
 void init_globals(void)
 {
@@ -113,7 +116,12 @@ static int
 set_light_buttons(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    return 0;
+    int err = 0;
+    int on = is_lit(state);
+    pthread_mutex_lock(&g_lock);
+    err = write_int(BUTTON_FILE, on?255:0);
+    pthread_mutex_unlock(&g_lock);
+    return err;
 }
 
 static int

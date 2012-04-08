@@ -110,6 +110,11 @@ PRODUCT_LOCALES += mdpi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/vold.A1_07.fstab:system/etc/vold.fstab
 
+# Keylayouts
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/prebuilt/keylayout/mg-capacitive.kl:system/usr/keylayout/mg-capacitive.kl \
+    device/lenovo/A1_07/prebuilt/keylayout/mg-capacitive.kcm.bin:system/usr/keychars/mg-capacitive.kcm.bin
+
 # Media Profile
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/etc/media_profiles.xml:system/etc/media_profiles.xml

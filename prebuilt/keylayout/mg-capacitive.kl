@@ -9,7 +9,7 @@ key 8     7
 key 9     8
 key 10    9
 key 78    PLUS
-key 158   BACK              
+key 158   BACK              VIRTUAL
 key 14    BACK              
 key 230   SOFT_RIGHT        WAKE
 key 106   SOFT_RIGHT        WAKE
@@ -17,7 +17,7 @@ key 107   ENDCALL           WAKE_DROPPED
 key 62    ENDCALL           WAKE_DROPPED
 key 60    ENDCALL           WAKE_DROPPED
 key 229   MENU              
-key 139   MENU              
+key 139   MENU              VIRTUAL
 key 59    MENU              
 key 127   SEARCH            WAKE_DROPPED
 key 217   SEARCH            WAKE_DROPPED
@@ -39,7 +39,7 @@ key 148   CAMERA            WAKE
 key 149   SEARCH            WAKE
 key 202   EXPLORER          WAKE
 key 203   CAMERA            WAKE
-key 102   HOME              
+key 102   HOME              VIRTUAL
 key 16    Q
 key 17    W
 key 18    E

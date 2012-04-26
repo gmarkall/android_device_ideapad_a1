@@ -1,0 +1,23 @@
+#!/system/bin/sh
+# ++++++++++++++++++++++++
+# + overclocking options +
+# ++++++++++++++++++++++++
+# listed below are the stock values for the five available frequency steps.
+# set and uncomment any of these to set the cpu frequency to the desired value for that specific slot.
+# valid numbers for the opps are:
+# opp1: 200-500
+# opp2: 501-700
+# opp3: 701-900
+# opp4: 901-1100
+# opp5: 1101-1300
+
+#echo 300 > /sys/power/overclock_opp1
+#echo 600 > /sys/power/overclock_opp2
+#echo 800 > /sys/power/overclock_opp3
+#echo 1000 > /sys/power/overclock_opp4
+#echo 1200 > /sys/power/overclock_opp5
+
+# listed below is the default max frequency in khz. set and uncomment this to your desired max frequency.
+# e.g. set this to the value of overclock_opp4 x 1000 to avoid using opp5 (which is using a higher vcore).
+
+#echo 1000000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq

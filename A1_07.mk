@@ -31,6 +31,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/etc/01modules:system/etc/init.d/01modules
 
+# Overclock script
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/etc/10overclock:system/etc/init.d/10overclock
+
 # Watchdog reset
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/etc/99watchdog:system/etc/init.d/99watchdog
@@ -133,7 +137,7 @@ PRODUCT_COPY_FILES += \
 
 # Wifi files
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/dhd.ko:system/lib/modules/dhd.ko \
+    device/lenovo/A1_07/prebuilt/modules/dhd.ko:system/lib/modules/dhd.ko \
     device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt \
     device/lenovo/A1_07/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
@@ -141,6 +145,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/glconfig.xml:system/vendor/gps/glconfig.xml \
     device/lenovo/A1_07/glgps:system/vendor/bin/glgps
+
+# Other modules
+PRODUCT_COPY_FILES += \
+    device/lenovo/A1_07/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
+	device/lenovo/A1_07/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
 # Modified sensor service
 PRODUCT_COPY_FILES += \

@@ -32,8 +32,6 @@ WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/vendor/firmware/nvram.txt"
 WIFI_DRIVER_MODULE_NAME     := "dhd"
-WIFI_PRE_LOAD_RFKILL        := true
-WIFI_POST_UNLOAD_RFKILL     := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true

@@ -2,8 +2,17 @@
 # system.prop for A1_07
 #
 
+wifi.supplicant_scan_interval = 30
+
 ro.additionalmounts=/mnt/emmc;/mnt/usbdisk
 ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
-persist.sys.scrollingcache=3
+
+# Disable Jpeg HW encoder
+jpeg.libskiahw.encoder.enable=0
+ro.config.disable_hw_accel=true
+
+ro.pm.awake_on_usb=1
+persist.sys.usb.config=mtp,adb
+ro.emmc=1
 dalvik.vm.checkjni=false
 

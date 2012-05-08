@@ -19,11 +19,14 @@ common_ti_dirs := libsensors
 
 include $(call all-named-subdir-makefiles, $(common_ti_dirs))
 
-$(call inherit-product, build/target/product/full_base.mk)
+DEVICE_PACKAGE_OVERLAYS += device/lenovo/A1_07/overlay
+
+$(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 
 # Get a proper init file
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/init.A1_07.rc:root/init.target.rc \
+    device/lenovo/A1_07/init.A1_07.rc:root/init.A1_07.rc \
+	device/lenovo/A1_07/init.A1_07.usb.rc:root/init.A1_07.usb.rc \
     device/lenovo/A1_07/ueventd.A1_07.rc:root/ueventd.A1_07.rc
 
 
@@ -45,20 +48,17 @@ PRODUCT_COPY_FILES += \
 
 # Place permission files
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+    frameworks/base/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
-
-$(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor.mk)
-
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/A1_07/overlay
+    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \ frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -71,6 +71,15 @@ PRODUCT_PACKAGES += \
     lights.A1_07 \
     acoustics.default \
     libomap_mm_library_jni
+
+# Audio
+PRODUCT_PACKAGES += \
+    libaudioutils \
+    audio.a2dp.default \
+    libaudiohw_legacy \
+    audio.primary.omap3 \
+    libaudiopolicy_legacy2 \
+    audio.primary.omap3
 
 # OMX components
 PRODUCT_PACKAGES += \
@@ -106,9 +115,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libreference-ril
+	
+PRODUCT_CHARACTERISTICS := tablet
 
-# Use medium-density artwork where available
-PRODUCT_LOCALES += mdpi
+# Screen size is "large", density is "mdpi"
+PRODUCT_AAPT_CONFIG := large mdpi
 
 # Vold
 PRODUCT_COPY_FILES += \
@@ -116,8 +127,9 @@ PRODUCT_COPY_FILES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/keylayout/mg-capacitive.kl:system/usr/keylayout/mg-capacitive.kl \
-    device/lenovo/A1_07/prebuilt/keylayout/mg-capacitive.kcm.bin:system/usr/keychars/mg-capacitive.kcm.bin
+    device/lenovo/A1_07/prebuilt/keylayout/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
+    device/lenovo/A1_07/prebuilt/keylayout/twl4030-keypad.kl:system/usr/keylayout/twl4030-keypad.kl \
+    device/lenovo/A1_07/prebuilt/keylayout/twl4030-keypad.kcm:system/usr/keychars/twl4030-keypad.kcm
 
 # Media Profile
 PRODUCT_COPY_FILES += \
@@ -158,19 +170,14 @@ PRODUCT_COPY_FILES += \
 
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dexopt-flags=m=y \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1 \
-    ro.allow.mock.location=1 \
     ro.sf.lcd_density=160 \
-    ro.setupwizard.enable_bypass=1 \
+    dalvik.vm.dexopt-flags=m=y \
     ro.sf.hwrotation=270 \
-    ro.setupwizard.enable_bypass=1 \
-    keyguard.no_require_sim=1 \
     wifi.interface=eth0 \
     alsa.mixer.playback.master=DAC2 Analog \
     alsa.mixer.capture.master=Analog \
-    dalvik.vm.heapsize=48m \
+    dalvik.vm.heapsize=128m \
+	opencore.asmd=1 \
     ro.opengles.version=131072
 
 FRAMEWORKS_BASE_SUBDIRS += \
@@ -181,6 +188,5 @@ FRAMEWORKS_BASE_SUBDIRS += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_A1_07
-PRODUCT_DEVICE := A1_07
+$(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor-blobs.mk)

@@ -53,7 +53,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \ frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
@@ -161,12 +162,11 @@ PRODUCT_COPY_FILES += \
 # Other modules
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
-    device/lenovo/A1_07/prebuilt/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
     device/lenovo/A1_07/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
 # Modified sensor service
-PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/libsensorservice.so:system/lib/libsensorservice.so
+#PRODUCT_COPY_FILES += \
+#    device/lenovo/A1_07/libsensorservice.so:system/lib/libsensorservice.so
 
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -177,7 +177,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     alsa.mixer.playback.master=DAC2 Analog \
     alsa.mixer.capture.master=Analog \
     dalvik.vm.heapsize=128m \
-	opencore.asmd=1 \
+    opencore.asmd=1 \
     ro.opengles.version=131072
 
 FRAMEWORKS_BASE_SUBDIRS += \
@@ -189,4 +189,3 @@ FRAMEWORKS_BASE_SUBDIRS += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor.mk)
-$(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor-blobs.mk)

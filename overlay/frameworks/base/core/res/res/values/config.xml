@@ -153,13 +153,6 @@ limitations under the License.
         <item>wl0.1</item>
     </string-array>
 
-    <!-- Configures whether the primary external storage device is
-        removable. For example, if external storage is on an SD card,
-        it is removable; if it is built in to the device, it is not removable.
-        The default product has external storage on an SD card, which is
-        removable. -->
-    <bool name="config_externalStorageRemovable">true</bool>
-
     <!-- Default color for notification LED. -->
     <color name="config_defaultNotificationColor">#ffffffff</color>
 

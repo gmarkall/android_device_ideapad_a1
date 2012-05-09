@@ -46,7 +46,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 BOARD_HAS_LARGE_FILESYSTEM := true
 #BOARD_RECOVERY_IGNORE_BOOTABLES := true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/A1_07/recovery/recovery_ui.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/A1_07/recovery/recovery_ui.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 2 > /proc/upgrade_mem/update_flag"
 
 # Modem

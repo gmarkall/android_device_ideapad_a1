@@ -25,6 +25,17 @@
 // sucks
 #define DEVICE_TIMER "/sys/devices/platform/vibrator/timer"
 
+int vibrator_exists()
+{
+    int fd;
+
+    fd = open(DEVICE_STATUS, O_RDWR);
+    if(fd < 0)
+        return 0;
+    close(fd);
+    return 1;
+}
+
 int sendit(int timeout_ms)
 {
     int nwr, ret, fd, fds;

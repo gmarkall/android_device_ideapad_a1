@@ -23,12 +23,16 @@ Usage:  img_from_target_files [flags] input_target_files output_image_zip
   -b  (--board_config)  <file>
       Deprecated.
 
+  -z  (--bootable_zip)
+      Include only the bootable images (eg 'boot' and 'recovery') in
+      the output.
+
 """
 
 import sys
 
-if sys.hexversion < 0x02050000:
-  print >> sys.stderr, "Python 2.5 or newer is required."
+if sys.hexversion < 0x02040000:
+  print >> sys.stderr, "Python 2.4 or newer is required."
   sys.exit(1)
 
 import errno
@@ -61,10 +65,13 @@ def AddUserdata(output_zip):
   img = tempfile.NamedTemporaryFile()
 
   build_command = []
-  if OPTIONS.info_dict["fstab"]["/data"].fs_type.startswith("ext"):
-    build_command = ["mkuserimg.sh",
-                     user_dir, img.name,
-                     OPTIONS.info_dict["fstab"]["/data"].fs_type, "data"]
+  fstab = OPTIONS.info_dict["fstab"]
+  if fstab and fstab["/data"].fs_type.startswith("ext"):
+    build_command = ["mkuserimg.sh"]
+    if "extfs_sparse_flag" in OPTIONS.info_dict:
+      build_command.append(OPTIONS.info_dict["extfs_sparse_flag"])
+    build_command.extend([user_dir, img.name,
+                     fstab["/data"].fs_type, "data"])
     if "userdata_size" in OPTIONS.info_dict:
       build_command.append(str(OPTIONS.info_dict["userdata_size"]))
   else:
@@ -75,7 +82,7 @@ def AddUserdata(output_zip):
     build_command.append(user_dir)
     build_command.append(img.name)
 
-  p = common.Run(build_command)
+  p = common.Run(build_command);
   p.communicate()
   assert p.returncode == 0, "build userdata.img image failed"
 
@@ -109,10 +116,14 @@ def AddSystem(output_zip):
       pass
 
   build_command = []
-  if OPTIONS.info_dict["fstab"]["/system"].fs_type.startswith("ext"):
-    build_command = ["mkuserimg.sh",
-                     os.path.join(OPTIONS.input_tmp, "system"), img.name,
-                     OPTIONS.info_dict["fstab"]["/system"].fs_type, "system"]
+  fstab = OPTIONS.info_dict["fstab"]
+  if fstab and fstab["/system"].fs_type.startswith("ext"):
+
+    build_command = ["mkuserimg.sh"]
+    if "extfs_sparse_flag" in OPTIONS.info_dict:
+      build_command.append(OPTIONS.info_dict["extfs_sparse_flag"])
+    build_command.extend([os.path.join(OPTIONS.input_tmp, "system"), img.name,
+                     fstab["/system"].fs_type, "system"])
     if "system_size" in OPTIONS.info_dict:
       build_command.append(str(OPTIONS.info_dict["system_size"]))
   else:
@@ -142,35 +153,44 @@ def CopyInfo(output_zip):
 
 
 def main(argv):
+  bootable_only = [False]
 
   def option_handler(o, a):
     if o in ("-b", "--board_config"):
       pass       # deprecated
+    if o in ("-z", "--bootable_zip"):
+      bootable_only[0] = True
     else:
       return False
     return True
 
   args = common.ParseOptions(argv, __doc__,
-                             extra_opts="b:",
-                             extra_long_opts=["board_config="],
+                             extra_opts="b:z",
+                             extra_long_opts=["board_config=",
+                                              "bootable_zip"],
                              extra_option_handler=option_handler)
+
+  bootable_only = bootable_only[0]
 
   if len(args) != 2:
     common.Usage(__doc__)
     sys.exit(1)
 
-  OPTIONS.input_tmp = common.UnzipTemp(args[0])
-
-  input_zip = zipfile.ZipFile(args[0], "r")
+  OPTIONS.input_tmp, input_zip = common.UnzipTemp(args[0])
   OPTIONS.info_dict = common.LoadInfoDict(input_zip)
 
   output_zip = zipfile.ZipFile(args[1], "w", compression=zipfile.ZIP_DEFLATED)
 
-  common.AddBoot(output_zip, OPTIONS.info_dict)
-  common.AddRecovery(output_zip, OPTIONS.info_dict)
-  AddSystem(output_zip)
-  AddUserdata(output_zip)
-  CopyInfo(output_zip)
+  common.GetBootableImage(
+      "boot.img", "boot.img", OPTIONS.input_tmp, "BOOT").AddToZip(output_zip)
+  common.GetBootableImage(
+      "recovery.img", "recovery.img", OPTIONS.input_tmp,
+      "RECOVERY").AddToZip(output_zip)
+
+  if not bootable_only:
+    AddSystem(output_zip)
+    AddUserdata(output_zip)
+    CopyInfo(output_zip)
 
   print "cleaning up..."
   output_zip.close()

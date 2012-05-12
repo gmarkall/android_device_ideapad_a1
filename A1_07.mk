@@ -164,10 +164,6 @@ PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
     device/lenovo/A1_07/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
-# Modified sensor service
-#PRODUCT_COPY_FILES += \
-#    device/lenovo/A1_07/libsensorservice.so:system/lib/libsensorservice.so
-
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=160 \

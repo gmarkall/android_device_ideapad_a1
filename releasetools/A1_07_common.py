@@ -224,8 +224,9 @@ def BuildBootableImage(sourcedir):
     cmd = ["mkimage"]
     for argument in open(fn).read().rstrip("\n").split(" "):
       cmd.append(argument)
-    cmd.append("-d")
-    cmd.append(os.path.join(sourcedir, "kernel")+":"+ramdisk_img.name)
+    # dont know why this crap is here, comment it for now
+    #cmd.append("-d")
+    #cmd.append(os.path.join(sourcedir, "kernel")+":"+ramdisk_img.name)
     cmd.append(img.name)
 
   else:

@@ -453,7 +453,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   f.close()
   ramdisk_img = common.File("ramdisk.img", data)
   ramdisk_img.AddToZip(output_zip)
-  f = open("build/tools/fuse", 'r')
+  f = open("device/lenovo/A1_07/releasetools/fuse", 'r')
   data = f.read()
   f.close()
   fuse = common.File("fuse", data)

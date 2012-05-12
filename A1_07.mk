@@ -173,7 +173,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=160 \
     dalvik.vm.dexopt-flags=m=y \
     ro.sf.hwrotation=270 \
-    wifi.interface=eth0 \
+    wifi.interface=wlan0 \
     alsa.mixer.playback.master=DAC2 Analog \
     alsa.mixer.capture.master=Analog \
     dalvik.vm.heapsize=128m \

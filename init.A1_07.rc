@@ -271,16 +271,16 @@ service baseimage /system/bin/cexec.out /system/lib/dsp/baseimage.dof
     #user media
     #group system camera
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/misc/wifi/wpa_supplicant.conf
-    socket wpa_eth0 dgram 0660 wifi system
+service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    socket wpa_wlan0 dgram 0660 wifi system
     disabled
     oneshot
 
-service dhcpcd /system/bin/dhcpcd -ABKL eth0
+service dhcpcd /system/bin/dhcpcd -ABKL wlan0
     disabled
     oneshot
 
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL eth0
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL wlan0
     disabled
     oneshot
 

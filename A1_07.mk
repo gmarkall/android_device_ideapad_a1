@@ -42,10 +42,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/etc/99watchdog:system/etc/init.d/99watchdog
 
-# Place prebuilt from omapzoom
-PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/GFX/system/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so 
-
 # Place permission files
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
@@ -77,9 +73,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libaudioutils \
     audio.a2dp.default \
-    libaudiohw_legacy \
-    audio.primary.omap3 \
-    libaudiopolicy_legacy2 \
     audio.primary.omap3
 
 # OMX components
@@ -157,12 +150,13 @@ PRODUCT_COPY_FILES += \
 # Gps files
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/glconfig.xml:system/vendor/gps/glconfig.xml \
+    device/lenovo/A1_07/gps.conf:system/etc/gps.conf \
     device/lenovo/A1_07/glgps:system/vendor/bin/glgps
 
 # Other modules
-PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
-    device/lenovo/A1_07/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
+#PRODUCT_COPY_FILES += \
+#    device/lenovo/A1_07/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
+#    device/lenovo/A1_07/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \

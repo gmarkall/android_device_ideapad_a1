@@ -2,14 +2,15 @@
 # system.prop for A1_07
 #
 
-wifi.supplicant_scan_interval = 30
+wifi.supplicant_scan_interval = 45
 
 ro.additionalmounts=/mnt/emmc;/mnt/usbdisk
 ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
 
-# Disable Jpeg HW encoder
-jpeg.libskiahw.encoder.enable=0
-ro.config.disable_hw_accel=true
+# Define JPEG codec to load. (Set libskiahw with 1 & Set ARM with 0)
+jpeg.libskiahw.decoder.enable=1
+# Define JPEG Threashold for Image size (bytes)
+jpeg.libskiahw.decoder.thresh=100000
 
 ro.pm.awake_on_usb=1
 persist.sys.usb.config=mtp,adb

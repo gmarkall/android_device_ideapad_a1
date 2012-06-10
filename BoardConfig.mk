@@ -46,7 +46,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 BOARD_HAS_LARGE_FILESYSTEM := true
 #BOARD_RECOVERY_IGNORE_BOOTABLES := true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/A1_07/recovery/recovery_ui.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/A1_07/recovery/recovery_ui.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 2 > /proc/upgrade_mem/update_flag"
 
 # Modem
@@ -116,3 +116,21 @@ RECOVERY_URAMDISK_COMPRESSION := none
 TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/A1_07/releasetools/A1_07_img_from_target_files
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/A1_07/releasetools/A1_07_ota_from_target_files
+
+#twrp
+DEVICE_RESOLUTION := 1024x600
+
+SP1_NAME := "kernel"
+SP1_BACKUP_METHOD := image
+SP1_MOUNTABLE := 0
+SP2_NAME := "ramdisk"
+SP2_BACKUP_METHOD := image
+SP2_MOUNTABLE := 0
+
+TW_INTERNAL_STORAGE_PATH := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+
+RECOVERY_TOUCHSCREEN_SWAP_XY := true
+RECOVERY_TOUCHSCREEN_FLIP_Y := true

@@ -163,7 +163,7 @@ limitations under the License.
     <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
 
     <!-- The default iface on which to monitor data use -->
-    <string name="config_datause_iface" translatable="false">eth0</string>
+    <string name="config_datause_iface" translatable="false">wlan0</string>
 
 	
 	<!-- If true, the screen can be rotated via the accelerometer in all 4

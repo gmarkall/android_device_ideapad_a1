@@ -35,8 +35,8 @@ PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/etc/01modules:system/etc/init.d/01modules
 
 # Overclock script
-PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/etc/10overclock:system/etc/init.d/10overclock
+#PRODUCT_COPY_FILES += \
+#    device/lenovo/A1_07/etc/10overclock:system/etc/init.d/10overclock
 
 # Watchdog reset
 PRODUCT_COPY_FILES += \
@@ -164,8 +164,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
     ro.sf.hwrotation=270 \
     wifi.interface=wlan0 \
-    alsa.mixer.playback.master=DAC2 Analog \
-    alsa.mixer.capture.master=Analog \
     dalvik.vm.heapsize=128m \
     opencore.asmd=1 \
     ro.opengles.version=131072

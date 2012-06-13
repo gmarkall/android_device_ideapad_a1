@@ -17,3 +17,6 @@ persist.sys.usb.config=mtp,adb
 ro.emmc=1
 dalvik.vm.checkjni=false
 
+alsa.mixer.playback.master=DAC2 Analog
+alsa.mixer.capture.master=Analog
+

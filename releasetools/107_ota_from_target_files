@@ -85,8 +85,8 @@ try:
 except ImportError:
   from sha import sha as sha1
 
-import A107_common as common
-import A107_edify_generator as edify_generator
+import a107_common as common
+import a107_edify_generator as edify_generator
 
 OPTIONS = common.OPTIONS
 OPTIONS.package_key = None
@@ -453,7 +453,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   f.close()
   ramdisk_img = common.File("ramdisk.img", data)
   ramdisk_img.AddToZip(output_zip)
-  f = open("device/lenovo/A107/releasetools/fuse", 'r')
+  f = open("device/lenovo/a107/releasetools/fuse", 'r')
   data = f.read()
   f.close()
   fuse = common.File("fuse", data)

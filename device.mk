@@ -19,28 +19,28 @@ common_ti_dirs := libsensors
 
 include $(call all-named-subdir-makefiles, $(common_ti_dirs))
 
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/A107/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lenovo/a107/overlay
 
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 
 # Get a proper init file
 PRODUCT_COPY_FILES += \
-    device/lenovo/A107/init.A107.rc:root/init.A107.rc \
-	device/lenovo/A107/init.A107.usb.rc:root/init.A107.usb.rc \
-    device/lenovo/A107/ueventd.A107.rc:root/ueventd.A107.rc
+    device/lenovo/a107/init.a107.rc:root/init.a107.rc \
+	device/lenovo/a107/init.a107.usb.rc:root/init.a107.usb.rc \
+    device/lenovo/a107/ueventd.a107.rc:root/ueventd.a107.rc
 
 
 # This file is used to install modules which dont get activated by the standard module script
 PRODUCT_COPY_FILES += \
-    device/lenovo/A107/prebuilt/init.d/01modules:system/etc/init.d/01modules
+    device/lenovo/a107/prebuilt/init.d/01modules:system/etc/init.d/01modules
 	
 # Overclock script
 #PRODUCT_COPY_FILES += \
-#    device/lenovo/A107/prebuilt/init.d/etc/10overclock:system/etc/init.d/10overclock
+#    device/lenovo/a107/prebuilt/init.d/etc/10overclock:system/etc/init.d/10overclock
 
 # Watchdog reset
 PRODUCT_COPY_FILES += \
-    device/lenovo/A107/prebuilt/init.d/99watchdog:system/etc/init.d/99watchdog
+    device/lenovo/a107/prebuilt/init.d/99watchdog:system/etc/init.d/99watchdog
 
 # Place permission files
 PRODUCT_COPY_FILES += \
@@ -65,7 +65,7 @@ PRODUCT_PACKAGES += \
     libCustomWifi \
     wpa_supplicant.conf \
     dhcpcd.conf \
-    lights.A107 \
+    lights.a107 \
     acoustics.default \
     libomap_mm_library_jni
 
@@ -117,20 +117,20 @@ PRODUCT_AAPT_CONFIG := large mdpi
 
 # Vold
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vold.A107.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/vold.a107.fstab:system/etc/vold.fstab
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/lenovo/A107/prebuilt/keylayout/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
-    device/lenovo/A107/prebuilt/keylayout/twl4030-keypad.kl:system/usr/keylayout/twl4030-keypad.kl \
-    device/lenovo/A107/prebuilt/keylayout/twl4030-keypad.kcm:system/usr/keychars/twl4030-keypad.kcm
+    device/lenovo/a107/prebuilt/keylayout/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
+    device/lenovo/a107/prebuilt/keylayout/twl4030-keypad.kl:system/usr/keylayout/twl4030-keypad.kl \
+    device/lenovo/a107/prebuilt/keylayout/twl4030-keypad.kcm:system/usr/keychars/twl4030-keypad.kcm
 
 # Media Profile
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/lenovo/A107/prebuilt/kernel
+    LOCAL_KERNEL := device/lenovo/a107/prebuilt/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -143,20 +143,20 @@ PRODUCT_COPY_FILES += \
 
 # Wifi files
 PRODUCT_COPY_FILES += \
-    device/lenovo/A107/prebuilt/modules/dhd.ko:system/lib/modules/dhd.ko \
-    device/lenovo/A107/prebuilt/firmware/nvram.txt:system/vendor/firmware/nvram.txt \
-    device/lenovo/A107/prebuilt/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
+    device/lenovo/a107/prebuilt/modules/dhd.ko:system/lib/modules/dhd.ko \
+    device/lenovo/a107/prebuilt/firmware/nvram.txt:system/vendor/firmware/nvram.txt \
+    device/lenovo/a107/prebuilt/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
 # Gps files
 PRODUCT_COPY_FILES += \
-    device/lenovo/A107/prebuilt/gps/glconfig.xml:system/vendor/gps/glconfig.xml \
-    device/lenovo/A107/prebuilt/gps/gps.conf:system/etc/gps.conf \
-    device/lenovo/A107/prebuilt/gps/glgps:system/vendor/bin/glgps
+    device/lenovo/a107/prebuilt/gps/glconfig.xml:system/vendor/gps/glconfig.xml \
+    device/lenovo/a107/prebuilt/gps/gps.conf:system/etc/gps.conf \
+    device/lenovo/a107/prebuilt/gps/glgps:system/vendor/bin/glgps
 
 # Other modules
 #PRODUCT_COPY_FILES += \
-#    device/lenovo/A107/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
-#    device/lenovo/A107/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
+#    device/lenovo/a107/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
+#    device/lenovo/a107/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -176,4 +176,4 @@ FRAMEWORKS_BASE_SUBDIRS += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-$(call inherit-product-if-exists, vendor/lenovo/A107/A107-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/a107/a107-vendor.mk)

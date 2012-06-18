@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/lenovo/A107/full_A107.mk)
+$(call inherit-product, device/lenovo/a107/full_a107.mk)
 
 PRODUCT_RELEASE_NAME := IdeaPadA1
 TARGET_BOOTANIMATION_NAME := vertical-540x960
@@ -22,7 +22,7 @@ TARGET_BOOTANIMATION_NAME := vertical-540x960
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=A107 BUILD_ID=IMM76I BUILD_DISPLAY_ID=IMM76I BUILD_FINGERPRINT="lenovo/lenovo_A107/A107:4.0.4/IMM76I/228551:user/release-keys" PRIVATE_BUILD_DESC="A107-user 4.0.4 IMM76I 228551 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=a107 BUILD_ID=IMM76I BUILD_DISPLAY_ID=IMM76I BUILD_FINGERPRINT="lenovo/lenovo_a107/a107:4.0.4/IMM76I/228551:user/release-keys" PRIVATE_BUILD_DESC="a107-user 4.0.4 IMM76I 228551 release-keys"
 
-PRODUCT_NAME := cm_A107
-PRODUCT_DEVICE := A107
+PRODUCT_NAME := cm_a107
+PRODUCT_DEVICE := a107

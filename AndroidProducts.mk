@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_A107.mk
+    $(LOCAL_DIR)/full_a107.mk

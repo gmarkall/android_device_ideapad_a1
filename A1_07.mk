@@ -32,15 +32,15 @@ PRODUCT_COPY_FILES += \
 
 # This file is used to install modules which dont get activated by the standard module script
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/etc/01modules:system/etc/init.d/01modules
-
+    device/lenovo/A1_07/prebuilt/init.d/01modules:system/etc/init.d/01modules
+	
 # Overclock script
 #PRODUCT_COPY_FILES += \
-#    device/lenovo/A1_07/etc/10overclock:system/etc/init.d/10overclock
+#    device/lenovo/A1_07/prebuilt/init.d/etc/10overclock:system/etc/init.d/10overclock
 
 # Watchdog reset
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/etc/99watchdog:system/etc/init.d/99watchdog
+    device/lenovo/A1_07/prebuilt/init.d/99watchdog:system/etc/init.d/99watchdog
 
 # Place permission files
 PRODUCT_COPY_FILES += \
@@ -117,7 +117,7 @@ PRODUCT_AAPT_CONFIG := large mdpi
 
 # Vold
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/vold.A1_07.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/vold.A1_07.fstab:system/etc/vold.fstab
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -127,10 +127,10 @@ PRODUCT_COPY_FILES += \
 
 # Media Profile
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/etc/media_profiles.xml:system/etc/media_profiles.xml
+   $(LOCAL_PATH)/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/lenovo/A1_07/kernel
+    LOCAL_KERNEL := device/lenovo/A1_07/prebuilt/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -144,14 +144,14 @@ PRODUCT_COPY_FILES += \
 # Wifi files
 PRODUCT_COPY_FILES += \
     device/lenovo/A1_07/prebuilt/modules/dhd.ko:system/lib/modules/dhd.ko \
-    device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt \
-    device/lenovo/A1_07/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
+    device/lenovo/A1_07/prebuilt/firmware/nvram.txt:system/vendor/firmware/nvram.txt \
+    device/lenovo/A1_07/prebuilt/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
 # Gps files
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/glconfig.xml:system/vendor/gps/glconfig.xml \
-    device/lenovo/A1_07/gps.conf:system/etc/gps.conf \
-    device/lenovo/A1_07/glgps:system/vendor/bin/glgps
+    device/lenovo/A1_07/prebuilt/gps/glconfig.xml:system/vendor/gps/glconfig.xml \
+    device/lenovo/A1_07/prebuilt/gps/gps.conf:system/etc/gps.conf \
+    device/lenovo/A1_07/prebuilt/gps/glgps:system/vendor/bin/glgps
 
 # Other modules
 #PRODUCT_COPY_FILES += \

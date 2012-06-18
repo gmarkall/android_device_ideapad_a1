@@ -25,16 +25,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/lenovo/A1_07/A1_07.mk)
 
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lenovo/A1_07/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
 PRODUCT_NAME := full_A1_07
 PRODUCT_DEVICE := A1_07
 PRODUCT_BRAND := lenovo

@@ -23,10 +23,10 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/lenovo/A107/device.mk)
+$(call inherit-product, device/lenovo/a107/device.mk)
 
-PRODUCT_NAME := full_A107
-PRODUCT_DEVICE := A107
+PRODUCT_NAME := full_a107
+PRODUCT_DEVICE := a107
 PRODUCT_BRAND := lenovo
 PRODUCT_MODEL := IdeapadA1
 PRODUCT_MANUFACTURER := lenovo

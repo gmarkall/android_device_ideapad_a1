@@ -1,5 +1,5 @@
 #
-# system.prop for A1_07
+# system.prop for A107
 #
 
 wifi.supplicant_scan_interval = 45

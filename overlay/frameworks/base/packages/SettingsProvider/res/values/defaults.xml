@@ -21,7 +21,7 @@
     <bool name="def_screen_brightness_automatic_mode">true</bool>
 
     <!-- Default for Settings.System.POINTER_SPEED -->
-    <integer name="def_pointer_speed">70</integer>
+    <integer name="def_pointer_speed">50</integer>
 
     <integer name="def_screen_off_timeout">60000</integer>
     <bool name="def_install_non_market_apps">true</bool>

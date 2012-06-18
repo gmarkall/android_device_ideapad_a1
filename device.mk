@@ -176,4 +176,7 @@ FRAMEWORKS_BASE_SUBDIRS += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# goo.im stuff
+$(call inherit-product, device/lenovo/a107/goo.mk)
+
 $(call inherit-product-if-exists, vendor/lenovo/a107/a107-vendor.mk)

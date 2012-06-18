@@ -19,6 +19,6 @@ dalvik.vm.checkjni=false
 
 alsa.mixer.playback.master=DAC2 Analog
 alsa.mixer.capture.master=Analog
+
 com.ti.omap_enhancement=true
-opencore.asmd=1
 

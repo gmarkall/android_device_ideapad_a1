@@ -73,6 +73,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libaudioutils \
     audio.a2dp.default \
+    libaudiohw_legacy \
+    libaudiopolicy_legacy2 \
     audio.primary.omap3
 
 # OMX components
@@ -106,6 +108,15 @@ PRODUCT_PACKAGES += \
     libOMX.TI.Video.Decoder \
     libOMX.TI.AMR.decode \
     libOMX.TI.G726.decode
+
+# from omap3.mk.
+
+PRODUCT_PACKAGES += \
+    libdomx \	
+    libstagefrighthw \
+    libion \
+    smc_pa_ctrl \
+    tf_daemon
 
 PRODUCT_PACKAGES += \
     libreference-ril

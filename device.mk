@@ -69,18 +69,33 @@ PRODUCT_PACKAGES += \
     acoustics.default \
     libomap_mm_library_jni
 
+# DSP Bridge userspace samples
+PRODUCT_PACKAGES += \
+    dmmcopy.out \
+    scale.out \
+    scale_dyn.out \
+    dynreg.out \
+    strmcopy.out \
+    strmcopy_dyn.out \
+    instutility.out \
+    zerocopymsg.out \
+    cexec.out \
+    ping.out \
+    faultapp.out \
+    qostest.out
+
 # Audio
 PRODUCT_PACKAGES += \
     libaudioutils \
     audio.a2dp.default \
     libaudiohw_legacy \
     libaudiopolicy_legacy2 \
+	alsa.omap3 \
     audio.primary.omap3
 
 # OMX components
 PRODUCT_PACKAGES += \
     libbridge \
-    cexec.out \
     libOMX_Core \
     libLCML \
     libOMX.TI.Video.Decoder \

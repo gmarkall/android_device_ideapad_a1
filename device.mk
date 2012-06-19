@@ -90,7 +90,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudiohw_legacy \
     libaudiopolicy_legacy2 \
-	alsa.omap3 \
+    alsa.omap3 \
     audio.primary.omap3
 
 # OMX components
@@ -127,7 +127,7 @@ PRODUCT_PACKAGES += \
 # from omap3.mk.
 
 PRODUCT_PACKAGES += \
-    libdomx \	
+    libdomx \
     libstagefrighthw \
     libion \
     smc_pa_ctrl \

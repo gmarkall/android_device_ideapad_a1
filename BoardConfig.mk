@@ -55,9 +55,11 @@ TARGET_RECOVERY_PRE_COMMAND := "echo 2 > /proc/upgrade_mem/update_flag"
 TARGET_NO_RADIOIMAGE := true
 
 # HW Graphics
+USE_OPENGL_RENDERER := true
 #OMAP3_GL := true
-#USE_OPENGL_RENDERER := true
 #COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS
+
+BOARD_EGL_CFG := device/lenovo/a107/prebuilt/egl.cfg
 
 # Workaround for eglconfig error
 BOARD_NO_RGBX_8888 := true
@@ -75,7 +77,7 @@ endif
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lenovo/a107/vibrator.c
 
-BOARD_USES_AUDIO_LEGACY := true
+#BOARD_USES_AUDIO_LEGACY := true
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
 BUILD_WITH_ALSA_UTILS := true
@@ -83,12 +85,10 @@ ALSA_DEFAULT_SAMPLE_RATE := 44100
 BOARD_USES_TI_OMAP_MODEM_AUDIO := false
 BOARD_HAS_NO_MISC_PARTITION := true
 
-#HARDWARE_OMX := true
+HARDWARE_OMX := true
 #BUILD_WITH_TI_AUDIO := 1
 #BUILD_PV_VIDEO_ENCODERS := 1
 #BUILD_WITHOUT_PV := true
-
-BOARD_EGL_CFG := device/lenovo/a107/prebuilt/egl.cfg
 
 # override overlay buffers
 COMMON_GLOBAL_CFLAGS += -DOVERLAY_NUM_REQBUFFERS=6

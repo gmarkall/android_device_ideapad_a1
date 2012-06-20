@@ -120,11 +120,12 @@ PRODUCT_PACKAGES += \
     libOMX.TI.JPEG.decoder \
     libOMX.TI.G726.encode \
     libOMX.TI.G729.decode \
-#    libOMX.TI.Video.Decoder \
+    libOMX.TI.Video.Decoder \
     libOMX.TI.AMR.decode \
     libOMX.TI.G726.decode
 
 # from omap3.mk.
+
 PRODUCT_PACKAGES += \
     libdomx \
     libstagefrighthw \

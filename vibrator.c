@@ -31,7 +31,7 @@ int sendit(int timeout_ms)
     char value[20];
     
     // vibration strength modifier
-    int timer = timeout_ms * 4;
+    int timer = timeout_ms * 3;
 
     fds = open(DEVICE_STATUS, O_RDWR);
     if(fds < 0)

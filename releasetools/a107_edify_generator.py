@@ -15,7 +15,7 @@
 import os
 import re
 
-import A1_07_common as common
+import a107_common as common
 
 class EdifyGenerator(object):
   """Class to generate scripts in the 'edify' recovery script language

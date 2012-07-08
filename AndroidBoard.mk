@@ -28,4 +28,4 @@ include $(BUILD_PREBUILT)
 #        $(transform-prebuilt-to-target)
 
 # include the non-open-source counterpart to this file
--include vendor/lenovo/A1_07/AndroidBoardVendor.mk
+-include vendor/lenovo/a107/AndroidBoardVendor.mk

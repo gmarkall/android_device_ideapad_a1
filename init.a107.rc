@@ -12,7 +12,7 @@ on init
     mkdir /.secure 0000 system system
     mkdir /debug 0000 system system
 
-    # for A1_07
+    # for a107
     mkdir /tmp 0775
 
 on fs

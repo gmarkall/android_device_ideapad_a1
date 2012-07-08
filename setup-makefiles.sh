@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=A1_07
+DEVICE=a107
 MANUFACTURER=lenovo
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE

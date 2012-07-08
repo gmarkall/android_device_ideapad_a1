@@ -23,25 +23,25 @@ $(call inherit-product, build/target/product/full_base.mk)
 
 # Get a proper init file
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/init.A1_07.rc:root/init.target.rc \
-    device/lenovo/A1_07/ueventd.A1_07.rc:root/ueventd.A1_07.rc
+    device/lenovo/a107/init.a107.rc:root/init.target.rc \
+    device/lenovo/a107/ueventd.a107.rc:root/ueventd.a107.rc
 
 
 # This file is used to install modules which dont get activated by the standard module script
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/etc/01modules:system/etc/init.d/01modules
+    device/lenovo/a107/etc/01modules:system/etc/init.d/01modules
 
 # Overclock script
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/etc/10overclock:system/etc/init.d/10overclock
+    device/lenovo/a107/etc/10overclock:system/etc/init.d/10overclock
 
 # Watchdog reset
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/etc/99watchdog:system/etc/init.d/99watchdog
+    device/lenovo/a107/etc/99watchdog:system/etc/init.d/99watchdog
 
 # Place prebuilt from omapzoom
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/GFX/system/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so 
+    device/lenovo/a107/prebuilt/GFX/system/lib/hw/overlay.omap3.so:/system/lib/hw/overlay.omap3.so 
 
 # Place permission files
 PRODUCT_COPY_FILES += \
@@ -56,9 +56,9 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-$(call inherit-product-if-exists, vendor/lenovo/A1_07/A1_07-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/a107/a107-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/A1_07/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lenovo/a107/overlay
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -68,7 +68,7 @@ PRODUCT_PACKAGES += \
     libCustomWifi \
     wpa_supplicant.conf \
     dhcpcd.conf \
-    lights.A1_07 \
+    lights.a107 \
     acoustics.default \
     libomap_mm_library_jni
 
@@ -112,19 +112,19 @@ PRODUCT_LOCALES += mdpi
 
 # Vold
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/vold.A1_07.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/etc/vold.a107.fstab:system/etc/vold.fstab
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/keylayout/mg-capacitive.kl:system/usr/keylayout/mg-capacitive.kl \
-    device/lenovo/A1_07/prebuilt/keylayout/mg-capacitive.kcm.bin:system/usr/keychars/mg-capacitive.kcm.bin
+    device/lenovo/a107/prebuilt/keylayout/mg-capacitive.kl:system/usr/keylayout/mg-capacitive.kl \
+    device/lenovo/a107/prebuilt/keylayout/mg-capacitive.kcm.bin:system/usr/keychars/mg-capacitive.kcm.bin
 
 # Media Profile
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/lenovo/A1_07/kernel
+    LOCAL_KERNEL := device/lenovo/a107/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -137,24 +137,24 @@ PRODUCT_COPY_FILES += \
 
 # Wifi files
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/modules/dhd.ko:system/lib/modules/dhd.ko \
-    device/lenovo/A1_07/nvram.txt:system/vendor/firmware/nvram.txt \
-    device/lenovo/A1_07/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
+    device/lenovo/a107/prebuilt/modules/dhd.ko:system/lib/modules/dhd.ko \
+    device/lenovo/a107/nvram.txt:system/vendor/firmware/nvram.txt \
+    device/lenovo/a107/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
 
 # Gps files
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/glconfig.xml:system/vendor/gps/glconfig.xml \
-    device/lenovo/A1_07/glgps:system/vendor/bin/glgps
+    device/lenovo/a107/glconfig.xml:system/vendor/gps/glconfig.xml \
+    device/lenovo/a107/glgps:system/vendor/bin/glgps
 
 # Other modules
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
-    device/lenovo/A1_07/prebuilt/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
-    device/lenovo/A1_07/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
+    device/lenovo/a107/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
+    device/lenovo/a107/prebuilt/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
+    device/lenovo/a107/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
 # Modified sensor service
 PRODUCT_COPY_FILES += \
-    device/lenovo/A1_07/libsensorservice.so:system/lib/libsensorservice.so
+    device/lenovo/a107/libsensorservice.so:system/lib/libsensorservice.so
 
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -182,8 +182,8 @@ FRAMEWORKS_BASE_SUBDIRS += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # goo.im stuff
-$(call inherit-product, device/lenovo/A1_07/goo.mk)
+$(call inherit-product, device/lenovo/a107/goo.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_A1_07
-PRODUCT_DEVICE := A1_07
+PRODUCT_NAME := full_a107
+PRODUCT_DEVICE := a107

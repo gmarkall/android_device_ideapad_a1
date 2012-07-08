@@ -1,5 +1,5 @@
 #
-# system.prop for A1_07
+# system.prop for a107
 #
 
 ro.additionalmounts=/mnt/emmc;/mnt/usbdisk

@@ -1,5 +1,5 @@
 # inherit from the proprietary version
--include vendor/lenovo/A1_07/BoardConfigVendor.mk
+-include vendor/lenovo/a107/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := omap3
@@ -10,7 +10,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_BOOTLOADER_BOARD_NAME := A1_07
+TARGET_BOOTLOADER_BOARD_NAME := a107
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 msmsdcc_sdioirq=1 wire.search_count=5
 BOARD_KERNEL_BASE := 0x80008000
@@ -21,7 +21,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE :=    299999232 # 0x08c60000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1999998976 # 0x105c0000
 BOARD_FLASH_BLOCK_SIZE := 131072 # check this
 
-TARGET_PREBUILT_KERNEL := device/lenovo/A1_07/kernel
+TARGET_PREBUILT_KERNEL := device/lenovo/a107/kernel
 
 # Wifi
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
@@ -46,7 +46,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/A1_07/recovery/recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/a107/recovery/recovery_ui.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 2 > /proc/upgrade_mem/update_flag"
 
 # Modem
@@ -66,7 +66,7 @@ BOARD_CAMERA_LIBRARIES := libcamera
 endif
 
 # Vibrator
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lenovo/A1_07/vibrator.c
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lenovo/a107/vibrator.c
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
@@ -80,7 +80,7 @@ HARDWARE_OMX := true
 #BUILD_PV_VIDEO_ENCODERS := 1
 #BUILD_WITHOUT_PV := true
 
-BOARD_EGL_CFG := device/lenovo/A1_07/prebuilt/egl.cfg
+BOARD_EGL_CFG := device/lenovo/a107/prebuilt/egl.cfg
 
 # override overlay buffers
 COMMON_GLOBAL_CFLAGS += -DOVERLAY_NUM_REQBUFFERS=6
@@ -114,5 +114,5 @@ RECOVERY_URAMDISK_ENTRY := 0x30800000
 RECOVERY_URAMDISK_COMPRESSION := none
 
 TARGET_PROVIDES_RELEASETOOLS := true
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/A1_07/releasetools/A1_07_img_from_target_files
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/A1_07/releasetools/A1_07_ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/a107/releasetools/a107_img_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/a107/releasetools/a107_ota_from_target_files

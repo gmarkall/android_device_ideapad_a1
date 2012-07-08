@@ -69,8 +69,8 @@ import tempfile
 import time
 import zipfile
 
-import A1_07_common as common
-import A1_07_edify_generator as edify_generator
+import a107_common as common
+import a107_edify_generator as edify_generator
 
 OPTIONS = common.OPTIONS
 OPTIONS.package_key = "build/target/product/security/testkey"
@@ -432,7 +432,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   f.close()
   ramdisk_img = common.File("ramdisk.img", data)
   ramdisk_img.AddToZip(output_zip)
-  f = open("device/lenovo/A1_07/releasetools/fuse", 'r')
+  f = open("device/lenovo/a107/releasetools/fuse", 'r')
   data = f.read()
   f.close()
   fuse = common.File("fuse", data)

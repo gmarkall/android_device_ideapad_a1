@@ -1,4 +1,4 @@
-## Vold 2.0 A1_07 fstab
+## Vold 2.0 a107 fstab
 
 dev_mount sdcard /mnt/sdcard auto /devices/platform/mmci-omap-hs.0/mmc_host/mmc1
 dev_mount emmc /mnt/emmc 5 /devices/platform/mmci-omap-hs.1/mmc_host/mmc0

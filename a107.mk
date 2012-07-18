@@ -149,7 +149,7 @@ PRODUCT_COPY_FILES += \
 # Other modules
 PRODUCT_COPY_FILES += \
     device/lenovo/a107/prebuilt/modules/cifs.ko:system/lib/modules/cifs.ko \
-    device/lenovo/a107/prebuilt/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
+    device/lenovo/a107/prebuilt/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
     device/lenovo/a107/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
 # Modified sensor service

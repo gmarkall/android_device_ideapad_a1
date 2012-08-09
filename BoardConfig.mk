@@ -56,7 +56,7 @@ TARGET_RECOVERY_PRE_COMMAND := "echo 2 > /proc/upgrade_mem/update_flag"
 TARGET_NO_RADIOIMAGE := true
 
 # HW Graphics
-USE_OPENGL_RENDERER := false
+USE_OPENGL_RENDERER := true
 #OMAP3_GL := true
 
 BOARD_EGL_CFG := device/lenovo/a107/prebuilt/egl.cfg
@@ -90,6 +90,7 @@ HARDWARE_OMX := true
 ifdef HARDWARE_OMX
 OMX_JPEG := true
 OMX_VENDOR := ti
+TARGET_USE_OMAP_COMPAT  := true
 OMX_VENDOR_INCLUDES := \
   hardware/ti/omx/system/src/openmax_il/omx_core/inc \
   hardware/ti/omx/image/src/openmax_il/jpeg_enc/inc

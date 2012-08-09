@@ -58,80 +58,70 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    libskiahw \
-    wlan_cu \
-    wlan_loader \
-    libCustomWifi \
-    wpa_supplicant.conf \
-    dhcpcd.conf \
     lights.a107 \
-    acoustics.default \
-    libomap_mm_library_jni
-
-# DSP Bridge userspace samples
-PRODUCT_PACKAGES += \
-    dmmcopy.out \
-    scale.out \
-    scale_dyn.out \
-    dynreg.out \
-    strmcopy.out \
-    strmcopy_dyn.out \
-    instutility.out \
-    zerocopymsg.out \
-    cexec.out \
-    ping.out \
-    faultapp.out \
-    qostest.out
-
-# Audio
-PRODUCT_PACKAGES += \
+	uim-sysfs \
     libaudioutils \
     audio.a2dp.default \
     libaudiohw_legacy \
+    audio.primary.omap3 \
     libaudiopolicy_legacy2 \
-    alsa.omap3 \
-    audio.primary.omap3
+    acoustics.default \
+	dspexec \
+    libCustomWifi \
+    libbridge \
+    libomap_mm_library_jni \
+    librs_jni \
+    libtiOsLib \
+    make_ext4fs
 
 # OMX components
 PRODUCT_PACKAGES += \
-    libbridge \
-    libOMX_Core \
+    libI420colorconvert \
     libLCML \
-    libOMX.TI.Video.Decoder \
-    libOMX.TI.Video.encoder \
-    libOMX.TI.WBAMR.decode \
-    libOMX.TI.AAC.encode \
-    libOMX.TI.G722.decode \
-    libOMX.TI.MP3.decode \
-    libOMX.TI.WMA.decode \
-    libOMX.TI.Video.encoder \
-    libOMX.TI.WBAMR.encode \
-    libOMX.TI.G729.encode \
+    libOMX_Core \
     libOMX.TI.AAC.decode \
-    libOMX.TI.VPP \
-    libOMX.TI.G711.encode \
-    libOMX.TI.JPEG.encoder \
-    libOMX.TI.G711.decode \
-    libOMX.TI.ILBC.decode \
-    libOMX.TI.ILBC.encode \
+    libOMX.TI.AAC.decode \
+    libOMX.TI.AAC.encode \
+    libOMX.TI.AMR.decode \
     libOMX.TI.AMR.encode \
+    libOMX.TI.AMR.encode \
+    libOMX.TI.G711.decode \
+    libOMX.TI.G711.encode \
+    libOMX.TI.G722.decode \
     libOMX.TI.G722.encode \
-    libOMX.TI.JPEG.decoder \
+    libOMX.TI.G726.decode \
     libOMX.TI.G726.encode \
     libOMX.TI.G729.decode \
+    libOMX.TI.G729.encode \
+    libOMX.TI.ILBC.decode \
+    libOMX.TI.ILBC.encode \
+    libOMX.TI.JPEG.decoder \
+    libOMX.TI.JPEG.encoder \
+    libOMX.TI.JPEG.Encoder \
+    libOMX.TI.MP3.decode \
     libOMX.TI.Video.Decoder \
-    libOMX.TI.AMR.decode \
-    libOMX.TI.G726.decode
+    libOMX.TI.Video.encoder \
+    libOMX.TI.VPP \
+    libOMX.TI.WBAMR.decode \
+    libOMX.TI.WBAMR.encode \
+    libOMX.TI.WBAMR.encode \
+    libOMX.TI.WMA.decode \
+    libVendor_ti_omx
+
+RODUCT_PACKAGES += \
+        libskiahw
 
 # from omap3.mk.
 
 PRODUCT_PACKAGES += \
-    libdomx \
-    libstagefrighthw \
-    libion \
-    smc_pa_ctrl \
-    tf_daemon
+	libdomx \
+	libstagefrighthw \
+	libion \
+	smc_pa_ctrl \
+	tf_daemon
+
+PRODUCT_PACKAGES += \
+	cexec.out
 
 PRODUCT_PACKAGES += \
     libreference-ril

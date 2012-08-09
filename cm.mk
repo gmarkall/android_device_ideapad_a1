@@ -17,7 +17,7 @@
 $(call inherit-product, device/lenovo/a107/full_a107.mk)
 
 PRODUCT_RELEASE_NAME := IdeaPadA1
-TARGET_BOOTANIMATION_NAME := vertical-540x960
+TARGET_BOOTANIMATION_NAME := vertical-600x1024
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)

@@ -48,8 +48,8 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0"
 BOARD_USES_UBOOT := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
-#BOARD_RECOVERY_IGNORE_BOOTABLES := true
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/a107/recovery/recovery_ui.c
+BOARD_RECOVERY_IGNORE_BOOTABLES := true
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lenovo/a107/recovery/recovery_keys.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 2 > /proc/upgrade_mem/update_flag"
 
 # Modem

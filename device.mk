@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 
-# include cicada's sensors library
-common_ti_dirs := libsensors
-
-include $(call all-named-subdir-makefiles, $(common_ti_dirs))
-
 DEVICE_PACKAGE_OVERLAYS += device/lenovo/a107/overlay
 
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
@@ -67,18 +62,19 @@ PRODUCT_PACKAGES += \
     libaudiopolicy_legacy2 \
     acoustics.default \
 	dspexec \
+	cexec.out \
     libCustomWifi \
     libbridge \
     libomap_mm_library_jni \
     librs_jni \
     libtiOsLib \
+	libreference-ril \
     make_ext4fs
 
 # OMX components
 PRODUCT_PACKAGES += \
     libI420colorconvert \
     libLCML \
-    libOMX_Core \
     libOMX.TI.AAC.decode \
     libOMX.TI.AAC.decode \
     libOMX.TI.AAC.encode \
@@ -106,26 +102,9 @@ PRODUCT_PACKAGES += \
     libOMX.TI.WBAMR.encode \
     libOMX.TI.WBAMR.encode \
     libOMX.TI.WMA.decode \
-    libVendor_ti_omx
+    libVendor_ti_omx \
+	libskiahw
 
-RODUCT_PACKAGES += \
-        libskiahw
-
-# from omap3.mk.
-
-PRODUCT_PACKAGES += \
-	libdomx \
-	libstagefrighthw \
-	libion \
-	smc_pa_ctrl \
-	tf_daemon
-
-PRODUCT_PACKAGES += \
-	cexec.out
-
-PRODUCT_PACKAGES += \
-    libreference-ril
-	
 PRODUCT_CHARACTERISTICS := tablet
 
 # Screen size is "large", density is "mdpi"
@@ -194,5 +173,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # goo.im stuff
 $(call inherit-product, device/lenovo/a107/goo.mk)
+$(call inherit-product, hardware/ti/omap3/omap3.mk)
 
 $(call inherit-product-if-exists, vendor/lenovo/a107/a107-vendor.mk)

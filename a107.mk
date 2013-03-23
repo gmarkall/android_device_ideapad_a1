@@ -152,10 +152,6 @@ PRODUCT_COPY_FILES += \
     device/lenovo/a107/prebuilt/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
     device/lenovo/a107/prebuilt/modules/tun.ko:system/lib/modules/tun.ko
 
-# Modified sensor service
-PRODUCT_COPY_FILES += \
-    device/lenovo/a107/libsensorservice.so:system/lib/libsensorservice.so
-
 # Set property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
